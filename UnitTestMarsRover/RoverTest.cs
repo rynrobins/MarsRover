@@ -299,6 +299,9 @@ namespace UnitTestMarsRover
             rover.PositionY = 0;
             rover.PositionX = 0;
 
+            rover.LandscapeHeight = 3;
+            rover.LandscapeWidth = 3;
+
             string[] commands = new string[] { "B", "B", "B", "L", "F" };
 
             foreach (string s in commands)
@@ -306,7 +309,7 @@ namespace UnitTestMarsRover
                 rover.Command_Receiver(s);
             }
 
-            Assert.AreEqual(1, rover.PositionY);
+            Assert.AreEqual(0, rover.PositionY);
             Assert.AreEqual(3, rover.PositionX);
 
         }
