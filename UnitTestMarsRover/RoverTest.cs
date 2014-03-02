@@ -102,7 +102,7 @@ namespace UnitTestMarsRover
             rover.PositionX = 0;
             rover.PositionY = 0;
 
-            rover.Command_Receiver("F");
+            rover.Command_Receiver("r");
 
             Assert.AreEqual(1, rover._position_Y);
         }
@@ -115,7 +115,7 @@ namespace UnitTestMarsRover
             rover.PositionX = 0;
             rover.PositionY = 0;
 
-            rover.Command_Receiver("F");
+            rover.Command_Receiver("R");
 
             Assert.AreEqual(1, rover._position_X);
         }
@@ -128,7 +128,7 @@ namespace UnitTestMarsRover
             rover.PositionX = 0;
             rover.PositionY = 0;
 
-            rover.Command_Receiver("F");
+            rover.Command_Receiver("R");
 
             Assert.AreEqual(-1, rover._position_Y);
         }
@@ -141,7 +141,7 @@ namespace UnitTestMarsRover
             rover.PositionX = 0;
             rover.PositionY = 0;
 
-            rover.Command_Receiver("F");
+            rover.Command_Receiver("r");
 
             Assert.AreEqual(-1, rover._position_X);
         }
