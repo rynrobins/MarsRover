@@ -131,7 +131,7 @@ namespace MarsRover
                     case "F":
                         Drive_Forward();
                         break;
-                    case "D":
+                    case "B":
                         Drive_Reverse();
                         break;
                     default:
