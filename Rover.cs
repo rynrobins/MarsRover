@@ -163,31 +163,31 @@ namespace MarsRover
             {
                 case "N":
                     _position_Y++;
-                    //if (PositionY >= _landscapeHeight)
-                    //{
-                    //    PositionY = 0;
-                    //}
+                    if (PositionY >= _landscapeHeight)
+                    {
+                        PositionY = 0;
+                    }
                     break;
                 case "E":
                     _position_X++;
-                    //if (PositionX >= _landscapeWidth)
-                    //{
-                    //    PositionX = 0;
-                    //}
+                    if (PositionX >= _landscapeWidth)
+                    {
+                        PositionX = 0;
+                    }
                     break;
                 case "S":
                     _position_Y--;
-                    //if (_position_Y < 0)
-                    //{
-                    //    _position_Y = _landscapeHeight;
-                    //}
+                    if (_position_Y < 0)
+                    {
+                        _position_Y = _landscapeHeight;
+                    }
                     break;
                 case "W":
                     _position_X--;
-                    //if (_position_X < 0)
-                    //{
-                    //    _position_X = _landscapeWidth;
-                    //}
+                    if (_position_X < 0)
+                    {
+                        _position_X = _landscapeWidth;
+                    }
                     break;
                 default:
                    
@@ -201,31 +201,31 @@ namespace MarsRover
             {
                 case "N":
                     _position_Y--;
-                    //if (_position_Y < 0)
-                    //{
-                    //    _position_Y = _landscapeHeight;
-                    //}
+                    if (_position_Y < 0)
+                    {
+                        _position_Y = _landscapeHeight;
+                    }
                     break;
                 case "E":
                     _position_X--;
-                    //if (_position_X < 0)
-                    //{
-                    //    _position_X = _landscapeWidth;
-                    //}
+                    if (_position_X < 0)
+                    {
+                        _position_X = _landscapeWidth;
+                    }
                     break;
                 case "S":
                     _position_Y++;
-                    //if (_position_Y > _landscapeHeight)
-                    //{
-                    //    _position_Y = 0;
-                    //}
+                    if (_position_Y > _landscapeHeight)
+                    {
+                        _position_Y = 0;
+                    }
                     break;
                 case "W":
                     _position_X++;
-                    //if (_position_X > _landscapeWidth)
-                    //{
-                    //    _position_X = 0;
-                    //}
+                    if (_position_X > _landscapeWidth)
+                    {
+                        _position_X = 0;
+                    }
                     break;
                 default:
                     //todo throw exception
