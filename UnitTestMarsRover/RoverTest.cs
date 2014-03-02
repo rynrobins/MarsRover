@@ -60,16 +60,14 @@ namespace UnitTestMarsRover
         {
             Rover rover = new Rover();
             rover.PositionHeading = "E";
-            rover.PositionX = 0;
+            rover.PositionX = 1;
             rover.PositionY = 0;
             rover.LandscapeWidth = 1;
             rover.LandscapeHeight = 1;
 
-            rover.Command_Receiver("F");
-            rover.Command_Receiver("F");
-            rover.Command_Receiver("F");
+            rover.Command_Receiver("F");          
 
-            Assert.AreEqual(1, rover.PositionX);
+            Assert.AreEqual(2, rover.PositionX);
         }
 
         [TestMethod]
