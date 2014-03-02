@@ -19,12 +19,12 @@ namespace MarsRover
             get { return _positionHeading; }
             set 
             {
-                _positionHeading = value;
+                _positionHeading = value.ToUpper();
                 if (_positionHeadingIndex == null)
                 {
-                    if (_headingDirectionalOrder.Contains(value))
+                    if (_headingDirectionalOrder.Contains(value.ToUpper()))
                     {
-                        _positionHeadingIndex = _headingDirectionalOrder.IndexOf(value);
+                        _positionHeadingIndex = _headingDirectionalOrder.IndexOf(value.ToUpper());
                     }
                     else
                     {
