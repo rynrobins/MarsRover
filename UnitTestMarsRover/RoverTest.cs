@@ -62,8 +62,8 @@ namespace UnitTestMarsRover
             rover.PositionHeading = "E";
             rover.PositionX = 1;
             rover.PositionY = 0;
-            rover.LandscapeWidth = 1;
-            rover.LandscapeHeight = 1;
+            rover.LandscapeWidth = 2;
+            rover.LandscapeHeight = 2;
 
             rover.Command_Receiver("F");          
 
@@ -244,7 +244,32 @@ namespace UnitTestMarsRover
             rover.PositionY = 0;
             rover.PositionX = 0;
 
+            rover.LandscapeHeight = 2;
+            rover.LandscapeWidth = 2;
+
             string[] commands = new string[] { "F", "F", "F" };
+
+            foreach (string s in commands)
+            {
+                rover.Command_Receiver(s);
+            }
+
+            Assert.AreEqual(1, rover.PositionY);
+            Assert.AreEqual(0, rover.PositionX);
+        }
+
+        [TestMethod]
+        public void Test_Rovers_Position_From_Multiple_Drive_And_Turn_Commands()
+        {
+            Rover rover = new Rover();
+            rover.PositionHeading = "W";
+            rover.PositionY = 0;
+            rover.PositionX = 3;
+
+            rover.LandscapeHeight = 3;
+            rover.LandscapeWidth = 3;
+
+            string[] commands = new string[] { "F", "F","R", "F", "F" };
 
             foreach (string s in commands)
             {
@@ -256,31 +281,15 @@ namespace UnitTestMarsRover
         }
 
         [TestMethod]
-        public void Test_Rovers_Position_From_Multiple_Drive_And_Turn_Commands()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "N";
-            rover.PositionY = 0;
-            rover.PositionX = 0;
-
-            string[] commands = new string[] { "F", "F","R", "F", "F" };
-
-            foreach (string s in commands)
-            {
-                rover.Command_Receiver(s);
-            }
-
-            Assert.AreEqual(2, rover.PositionY);
-            Assert.AreEqual(2, rover.PositionX);
-        }
-
-        [TestMethod]
         public void Test_Rovers_Position_From_Multiple_Reverse_Commands()
         {
             Rover rover = new Rover();
             rover.PositionHeading = "N";
-            rover.PositionY = 0;
-            rover.PositionX = 0;
+            rover.PositionY = 1;
+            rover.PositionX = 1;
+
+            rover.LandscapeHeight = 3;
+            rover.LandscapeWidth = 3;
 
             string[] commands = new string[] { "B", "B", "B", "L", "F" };
 
@@ -289,8 +298,8 @@ namespace UnitTestMarsRover
                 rover.Command_Receiver(s);
             }
 
-            Assert.AreEqual(-3, rover.PositionY);
-            Assert.AreEqual(-1, rover.PositionX);
+            Assert.AreEqual(1, rover.PositionY);
+            Assert.AreEqual(0, rover.PositionX);
         }
 
         [TestMethod]
@@ -301,10 +310,10 @@ namespace UnitTestMarsRover
             rover.PositionY = 0;
             rover.PositionX = 0;
 
-            rover.LandscapeHeight = 2;
-            rover.LandscapeWidth = 2;
+            rover.LandscapeHeight = 3;
+            rover.LandscapeWidth = 3;
 
-            string[] commands = new string[] { "F"};//, "F", "F", "F" };
+            string[] commands = new string[] { "F", "F", "F", "F" };
 
             foreach (string s in commands)
             {
@@ -324,8 +333,8 @@ namespace UnitTestMarsRover
             rover.PositionY = 4;
             rover.PositionX = 3;
 
-            rover.LandscapeHeight = 2;
-            rover.LandscapeWidth = 2;
+            rover.LandscapeHeight = 3;
+            rover.LandscapeWidth = 3;
 
             Assert.AreEqual(4, rover.PositionY);
             Assert.AreEqual(3, rover.PositionX);
