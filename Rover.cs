@@ -73,14 +73,14 @@ namespace MarsRover
         public int LandscapeWidth 
         {
             get { return _landscapeWidth; }
-            set { _landscapeWidth = value; }
+            set { _landscapeWidth = value - 1; }
         }
 
         public int _landscapeHeight;
         public int LandscapeHeight
         {
             get { return _landscapeHeight; }
-            set { _landscapeHeight = value; }
+            set { _landscapeHeight = value - 1; }
         }
 
         public string GetDirectionalHeading()
@@ -163,14 +163,14 @@ namespace MarsRover
             {
                 case "N":
                     _position_Y++;
-                    if (PositionY >= _landscapeHeight)
+                    if (PositionY > _landscapeHeight)
                     {
                         PositionY = 0;
                     }
                     break;
                 case "E":
                     _position_X++;
-                    if (PositionX >= _landscapeWidth)
+                    if (PositionX > _landscapeWidth)
                     {
                         PositionX = 0;
                     }
