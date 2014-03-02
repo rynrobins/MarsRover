@@ -26,15 +26,17 @@ namespace MarsRover
                     }
                     else
                     {
-                        _positionHeadingIndex = 0;
+                        //RR do not set a default heading.
+                        //_positionHeadingIndex = 0;
+                        throw new IndexOutOfRangeException(string.Format("Heading is not part of the accepted headings. Heading {0}", value));
                     }
                 }
             }
         }
 
         
-        public int _positionHeadingIndex;
-        public int PositionHeadingIndex
+        public int? _positionHeadingIndex;
+        public int? PositionHeadingIndex
         {
             get { return _positionHeadingIndex; }
 
@@ -69,7 +71,10 @@ namespace MarsRover
         {
             try
             {
-                return _headingDirectionalOrder[_positionHeadingIndex];
+                if (_positionHeadingIndex != null)
+                    return _headingDirectionalOrder[(int)_positionHeadingIndex];
+                else
+                    throw new NullReferenceException("Directional heading is null.");
             }
             catch (IndexOutOfRangeException ioore)
             {
@@ -85,19 +90,19 @@ namespace MarsRover
             {
                 try
                 {
-                    switch(command.ToUpper())
+                    switch(command)
                     {
                         case "F":
-                            Drive _driveF = new Drive(command.ToUpper());
+                            Drive _driveF = new Drive(command);
                             break;
                         case"B":
-                            Drive _driveB = new Drive(command.ToUpper());
+                            Drive _driveB = new Drive(command);
                             break;
                         case "R":
-                            Turn _turnR = new Turn(command.ToUpper());
+                            Turn _turnR = new Turn(command);
                             break;
                         case "L":
-                            Turn _turnL = new Turn(command.ToUpper());
+                            Turn _turnL = new Turn(command);
                             break;
                         default:
                             throw new Exception(string.Format("Command receiver does not have a process for command: {0}", command));
@@ -119,6 +124,11 @@ namespace MarsRover
     public class Drive : Rover
     {
         List<string> acceptedDriveCommands = new List<string>() { "f", "F", "b", "B" };
+        public Drive()
+        {
+
+        }
+        
         public Drive(string command)
         {
             if (acceptedDriveCommands.Contains(command))
