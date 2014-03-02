@@ -55,14 +55,14 @@ namespace MarsRover
             }
         }
 
-        public int _position_X;
+        public static int _position_X;
         public int PositionX
         {
             get { return _position_X; }
             set { value = _position_X; }
         }
 
-        public int _position_Y;
+        public static int _position_Y;
         public int PositionY
         {
             get { return _position_Y; }
@@ -164,17 +164,17 @@ namespace MarsRover
             {
                 case "N":
                     _position_Y++;
-                    if (_position_Y > _landscapeHeight)
+                    if (PositionY >= _landscapeHeight)
                     {
-                        _position_Y = 0;
+                        PositionY = 0;
                     }
                     break;
                 case "E":
                     _position_X++;
-                    //if (_position_X > _landscapeWidth)
-                    //{
-                    //    _position_X = 0;
-                    //}
+                    if (PositionX >= _landscapeWidth)
+                    {
+                        PositionX = 0;
+                    }
                     break;
                 case "S":
                     _position_Y--;
