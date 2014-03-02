@@ -55,32 +55,32 @@ namespace MarsRover
             }
         }
 
-        public static int _position_X;
+        public int _position_X;
         public int PositionX
         {
             get { return _position_X; }
-            set { value = _position_X; }
+            set { _position_X = value; }
         }
 
-        public static int _position_Y;
+        public int _position_Y;
         public int PositionY
         {
             get { return _position_Y; }
-            set { value = _position_Y; }
+            set { _position_Y = value; }
         }
 
         public int _landscapeWidth;
         public int LandscapeWidth 
         {
             get { return _landscapeWidth; }
-            set { value = _landscapeWidth; }
+            set { _landscapeWidth = value; }
         }
 
         public int _landscapeHeight;
         public int LandscapeHeight
         {
             get { return _landscapeHeight; }
-            set { value = _landscapeHeight; }
+            set { _landscapeHeight = value; }
         }
 
         public string GetDirectionalHeading()
@@ -98,7 +98,6 @@ namespace MarsRover
                
             }
         }
-
 
         public void Command_Receiver(string command)
         {
@@ -164,17 +163,17 @@ namespace MarsRover
             {
                 case "N":
                     _position_Y++;
-                    if (PositionY >= _landscapeHeight)
-                    {
-                        PositionY = 0;
-                    }
+                    //if (PositionY >= _landscapeHeight)
+                    //{
+                    //    PositionY = 0;
+                    //}
                     break;
                 case "E":
                     _position_X++;
-                    if (PositionX >= _landscapeWidth)
-                    {
-                        PositionX = 0;
-                    }
+                    //if (PositionX >= _landscapeWidth)
+                    //{
+                    //    PositionX = 0;
+                    //}
                     break;
                 case "S":
                     _position_Y--;
@@ -202,31 +201,31 @@ namespace MarsRover
             {
                 case "N":
                     _position_Y--;
-                    if (_position_Y < 0)
-                    {
-                        _position_Y = _landscapeHeight;
-                    }
+                    //if (_position_Y < 0)
+                    //{
+                    //    _position_Y = _landscapeHeight;
+                    //}
                     break;
                 case "E":
                     _position_X--;
-                    if (_position_X < 0)
-                    {
-                        _position_X = _landscapeWidth;
-                    }
+                    //if (_position_X < 0)
+                    //{
+                    //    _position_X = _landscapeWidth;
+                    //}
                     break;
                 case "S":
                     _position_Y++;
-                    if (_position_Y > _landscapeHeight)
-                    {
-                        _position_Y = 0;
-                    }
+                    //if (_position_Y > _landscapeHeight)
+                    //{
+                    //    _position_Y = 0;
+                    //}
                     break;
                 case "W":
                     _position_X++;
-                    if (_position_X > _landscapeWidth)
-                    {
-                        _position_X = 0;
-                    }
+                    //if (_position_X > _landscapeWidth)
+                    //{
+                    //    _position_X = 0;
+                    //}
                     break;
                 default:
                     //todo throw exception
