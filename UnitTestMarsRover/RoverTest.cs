@@ -62,6 +62,8 @@ namespace UnitTestMarsRover
             rover.PositionHeading = "E";
             rover.PositionX = 0;
             rover.PositionY = 0;
+            rover.LandscapeWidth = 10;
+            rover.LandscapeHeight = 10;
 
             rover.Command_Receiver("F");
 
@@ -295,14 +297,14 @@ namespace UnitTestMarsRover
         public void Test_Wrapping_On_3_X_3_Grid()
         {
             Rover rover = new Rover();
-            rover.PositionHeading = "N";
+            rover.PositionHeading = "E";
             rover.PositionY = 0;
             rover.PositionX = 0;
 
-            rover.LandscapeHeight = 3;
-            rover.LandscapeWidth = 3;
+            rover.LandscapeHeight = 2;
+            rover.LandscapeWidth = 2;
 
-            string[] commands = new string[] { "B", "B", "B", "L", "F" };
+            string[] commands = new string[] { "F"};//, "F", "F", "F" };
 
             foreach (string s in commands)
             {
@@ -310,7 +312,7 @@ namespace UnitTestMarsRover
             }
 
             Assert.AreEqual(0, rover.PositionY);
-            Assert.AreEqual(3, rover.PositionX);
+            Assert.AreEqual(1, rover.PositionX);
 
         }
 
