@@ -62,15 +62,7 @@ namespace UnitTestMarsRover
             rover.PositionHeading = "E";
             rover.PositionX = 0;
             rover.PositionY = 0;
-
-            Drive driveRover = new Drive();
-            driveRover.PositionHeading = "E";
-            driveRover.PositionX = 0;
-            driveRover.PositionY = 0;
-
-            driveRover.Drive_Forward();
             
-
             Assert.AreEqual(1, rover._position_X);
         }
 
