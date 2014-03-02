@@ -253,5 +253,63 @@ namespace UnitTestMarsRover
             Assert.AreEqual(0, rover.PositionX);
         }
 
+        [TestMethod]
+        public void Test_Rovers_Position_From_Multiple_Drive_And_Turn_Commands()
+        {
+            Rover rover = new Rover();
+            rover.PositionHeading = "N";
+            rover.PositionY = 0;
+            rover.PositionX = 0;
+
+            string[] commands = new string[] { "F", "F","R", "F", "F" };
+
+            foreach (string s in commands)
+            {
+                rover.Command_Receiver(s);
+            }
+
+            Assert.AreEqual(2, rover.PositionY);
+            Assert.AreEqual(2, rover.PositionX);
+        }
+
+        [TestMethod]
+        public void Test_Rovers_Position_From_Multiple_Reverse_Commands()
+        {
+            Rover rover = new Rover();
+            rover.PositionHeading = "N";
+            rover.PositionY = 0;
+            rover.PositionX = 0;
+
+            string[] commands = new string[] { "B", "B", "B", "L", "F" };
+
+            foreach (string s in commands)
+            {
+                rover.Command_Receiver(s);
+            }
+
+            Assert.AreEqual(-3, rover.PositionY);
+            Assert.AreEqual(-1, rover.PositionX);
+        }
+
+        [TestMethod]
+        public void Test_Wrapping_On_3_X_3_Grid()
+        {
+            Rover rover = new Rover();
+            rover.PositionHeading = "N";
+            rover.PositionY = 0;
+            rover.PositionX = 0;
+
+            string[] commands = new string[] { "B", "B", "B", "L", "F" };
+
+            foreach (string s in commands)
+            {
+                rover.Command_Receiver(s);
+            }
+
+            Assert.AreEqual(1, rover.PositionY);
+            Assert.AreEqual(3, rover.PositionX);
+
+        }
+
     }
 }
