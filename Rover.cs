@@ -92,7 +92,7 @@ namespace MarsRover
             {
                 try
                 {
-                    switch(command)
+                    switch(command.ToUpper())
                     {
                         case "F":
                             Drive(command);
