@@ -126,7 +126,7 @@ namespace MarsRover
         {
             if (acceptedDriveCommands.Contains(command))
             {
-                switch (command)
+                switch (command.ToUpper())
                 {
                     case "F":
                         Drive_Forward();
@@ -192,7 +192,7 @@ namespace MarsRover
         {
             if (acceptedTurnCommands.Contains(command))
             {
-                switch (command)
+                switch (command.ToUpper())
                 {
                     case "R":
                         Turn_Right();
