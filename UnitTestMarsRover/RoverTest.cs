@@ -49,6 +49,9 @@ namespace UnitTestMarsRover
             rover.PositionX = 0;
             rover.PositionY = 0;
 
+            rover.LandscapeWidth = 2;
+            rover.LandscapeHeight = 2;
+
             rover.Command_Receiver("F");
 
             Assert.AreEqual(1, rover.PositionY);
@@ -78,9 +81,12 @@ namespace UnitTestMarsRover
             rover.PositionX = 0;
             rover.PositionY = 0;
 
+            rover.LandscapeWidth = 2;
+            rover.LandscapeHeight = 2;
+
             rover.Command_Receiver("F");
 
-            Assert.AreEqual(-1, rover.PositionY);
+            Assert.AreEqual(1, rover.PositionY);
         }
 
         [TestMethod]
@@ -91,9 +97,12 @@ namespace UnitTestMarsRover
             rover.PositionX = 0;
             rover.PositionY = 0;
 
+            rover.LandscapeWidth = 2;
+            rover.LandscapeHeight = 2;
+
             rover.Command_Receiver("F");
 
-            Assert.AreEqual(-1, rover.PositionX);
+            Assert.AreEqual(1, rover.PositionX);
         }
 
         [TestMethod]
@@ -103,6 +112,9 @@ namespace UnitTestMarsRover
             rover.PositionHeading = "S";
             rover.PositionX = 0;
             rover.PositionY = 0;
+
+            rover.LandscapeWidth = 2;
+            rover.LandscapeHeight = 2;
 
             rover.Command_Receiver("b");
 
@@ -117,6 +129,9 @@ namespace UnitTestMarsRover
             rover.PositionX = 0;
             rover.PositionY = 0;
 
+            rover.LandscapeWidth = 10;
+            rover.LandscapeHeight = 2;
+
             rover.Command_Receiver("B");
 
             Assert.AreEqual(1, rover.PositionX);
@@ -128,11 +143,14 @@ namespace UnitTestMarsRover
             Rover rover = new Rover();
             rover.PositionHeading = "N";
             rover.PositionX = 0;
-            rover.PositionY = 0;
+            rover.PositionY = 2;
+
+            rover.LandscapeWidth = 3;
+            rover.LandscapeHeight = 3;
 
             rover.Command_Receiver("B");
 
-            Assert.AreEqual(-1, rover.PositionY);
+            Assert.AreEqual(1, rover.PositionY);
         }
 
         [TestMethod]
@@ -143,9 +161,12 @@ namespace UnitTestMarsRover
             rover.PositionX = 0;
             rover.PositionY = 0;
 
+            rover.LandscapeWidth = 10;
+            rover.LandscapeHeight = 2;
+
             rover.Command_Receiver("b");
 
-            Assert.AreEqual(-1, rover.PositionX);
+            Assert.AreEqual(9, rover.PositionX);
         }
 
         [TestMethod]
@@ -266,8 +287,8 @@ namespace UnitTestMarsRover
             rover.PositionY = 0;
             rover.PositionX = 3;
 
-            rover.LandscapeHeight = 3;
-            rover.LandscapeWidth = 3;
+            rover.LandscapeHeight = 4;
+            rover.LandscapeWidth = 4;
 
             string[] commands = new string[] { "F", "F","R", "F", "F" };
 
