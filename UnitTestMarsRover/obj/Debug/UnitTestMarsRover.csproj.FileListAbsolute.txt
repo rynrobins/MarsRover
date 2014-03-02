@@ -1,0 +1,7 @@
+C:\MarsRover2\UnitTestMarsRover\bin\Debug\UnitTestMarsRover.dll
+C:\MarsRover2\UnitTestMarsRover\bin\Debug\UnitTestMarsRover.pdb
+C:\MarsRover2\UnitTestMarsRover\bin\Debug\MarsRover.dll
+C:\MarsRover2\UnitTestMarsRover\bin\Debug\MarsRover.pdb
+C:\MarsRover2\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.csprojResolveAssemblyReference.cache
+C:\MarsRover2\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.dll
+C:\MarsRover2\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.pdb
