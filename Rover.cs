@@ -164,10 +164,10 @@ namespace MarsRover
             {
                 case "N":
                     _position_Y++;
-                    //if(_position_Y > _landscapeHeight)
-                    //{
-                    //    _position_Y = 0;
-                    //}
+                    if (_position_Y > _landscapeHeight)
+                    {
+                        _position_Y = 0;
+                    }
                     break;
                 case "E":
                     _position_X++;
