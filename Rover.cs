@@ -11,7 +11,7 @@ namespace MarsRover
         List<string> acceptedCommands = new List<string>() {"f", "F", "b", "B", "r", "R", "l", "L" };
         public List<string> _headingDirectionalOrder = new List<string>() { "N", "E", "S", "W" };
         List<string> acceptedDriveCommands = new List<string>() { "f", "F", "b", "B" };
-        List<string> acceptedTurnCommands = new List<string>() { "n", "N", "e", "E", "s", "S", "w", "W" };
+        List<string> acceptedTurnCommands = new List<string>() { "r", "R", "l" ,"L" };
        
         public string _positionHeading;
         public string PositionHeading
