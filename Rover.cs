@@ -164,31 +164,31 @@ namespace MarsRover
             {
                 case "N":
                     _position_Y++;
-                    if(_position_Y > _landscapeHeight)
-                    {
-                        _position_Y = 0;
-                    }
+                    //if(_position_Y > _landscapeHeight)
+                    //{
+                    //    _position_Y = 0;
+                    //}
                     break;
                 case "E":
                     _position_X++;
-                    if (_position_X > _landscapeWidth)
-                    {
-                        _position_X = 0;
-                    }
+                    //if (_position_X > _landscapeWidth)
+                    //{
+                    //    _position_X = 0;
+                    //}
                     break;
                 case "S":
                     _position_Y--;
-                    if (_position_Y < 0)
-                    {
-                        _position_Y = _landscapeHeight;
-                    }
+                    //if (_position_Y < 0)
+                    //{
+                    //    _position_Y = _landscapeHeight;
+                    //}
                     break;
                 case "W":
                     _position_X--;
-                    if (_position_X < 0)
-                    {
-                        _position_X = _landscapeWidth;
-                    }
+                    //if (_position_X < 0)
+                    //{
+                    //    _position_X = _landscapeWidth;
+                    //}
                     break;
                 default:
                    
