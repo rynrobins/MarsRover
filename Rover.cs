@@ -10,6 +10,8 @@ namespace MarsRover
     {
         List<string> acceptedCommands = new List<string>() {"f", "F", "b", "B", "n", "N", "e", "E", "s", "S", "w", "W" };
         public List<string> _headingDirectionalOrder = new List<string>() { "N", "E", "S", "W" };
+        List<string> acceptedDriveCommands = new List<string>() { "f", "F", "b", "B" };
+        List<string> acceptedTurnCommands = new List<string>() { "n", "N", "e", "E", "s", "S", "w", "W" };
        
         public string _positionHeading;
         public string PositionHeading
@@ -93,16 +95,16 @@ namespace MarsRover
                     switch(command)
                     {
                         case "F":
-                            Drive _driveF = new Drive(command);
+                            Drive(command);
                             break;
                         case"B":
-                            Drive _driveB = new Drive(command);
+                            Drive(command);
                             break;
                         case "R":
-                            Turn _turnR = new Turn(command);
+                            Turn(command);
                             break;
                         case "L":
-                            Turn _turnL = new Turn(command);
+                            Turn(command);
                             break;
                         default:
                             throw new Exception(string.Format("Command receiver does not have a process for command: {0}", command));
@@ -119,17 +121,8 @@ namespace MarsRover
             }
 
         }
-    }
 
-    public class Drive : Rover
-    {
-        List<string> acceptedDriveCommands = new List<string>() { "f", "F", "b", "B" };
-        public Drive()
-        {
-
-        }
-        
-        public Drive(string command)
+        public void Drive(string command)
         {
             if (acceptedDriveCommands.Contains(command))
             {
@@ -195,13 +188,7 @@ namespace MarsRover
             }
         }
 
-    }
-
-    public class Turn : Rover
-    {
-        List<string> acceptedTurnCommands = new List<string>() { "n", "N", "e", "E", "s", "S", "w", "W" };
-              
-        public Turn(string command)
+        public void Turn(string command)
         {
             if (acceptedTurnCommands.Contains(command))
             {
@@ -224,6 +211,7 @@ namespace MarsRover
             }
 
         }
+
         public void Turn_Right()
         {
             _positionHeadingIndex++;
@@ -233,27 +221,6 @@ namespace MarsRover
                 //treat the directional order like a loop and reset when it hits the end
                 _positionHeadingIndex = 0;
             }
-
-
-
-            //switch (_positionHeadingIndex)
-            //{
-            //    case "N":
-            //        _positionHeadingIndex = "E";
-            //        break;
-            //    case "E":
-            //        _positionHeadingIndex = "S";
-            //        break;
-            //    case "S":
-            //        _positionHeadingIndex = "W";
-            //        break;
-            //    case "W":
-            //        _positionHeadingIndex = "N";
-            //        break;
-            //    default:
-            //        //todo throw exception
-            //        break;
-            //}
         }
 
         public void Turn_Left()
@@ -264,24 +231,9 @@ namespace MarsRover
                 //treat the directional order like a loop and when it drops below set it the Last position in the array
                 _positionHeadingIndex = _headingDirectionalOrder.Count - 1;
             }
-            //switch (_positionHeadingIndex)
-            //{
-            //    case "N":
-            //        _positionHeadingIndex = "W";
-            //        break;
-            //    case "E":
-            //        _positionHeadingIndex = "N";
-            //        break;
-            //    case "S":
-            //        _positionHeadingIndex = "E";
-            //        break;
-            //    case "W":
-            //        _positionHeadingIndex = "S";
-            //        break;
-            //    default:
-            //        //todo throw exception
-            //        break;
-            //}
-        }
+         }
+
     }
+
+   
 }
