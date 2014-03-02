@@ -62,7 +62,9 @@ namespace UnitTestMarsRover
             rover.PositionHeading = "E";
             rover.PositionX = 0;
             rover.PositionY = 0;
-            
+
+            rover.Command_Receiver("F");
+
             Assert.AreEqual(1, rover._position_X);
         }
 
