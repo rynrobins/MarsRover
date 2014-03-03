@@ -83,6 +83,13 @@ namespace MarsRover
             set { _landscapeHeight = value - 1; }
         }
 
+        public object[] _fullLandscapeGrid;
+        public object[] FullLandscapeGrid
+        {
+            get { return _fullLandscapeGrid; }
+            set { _fullLandscapeGrid = value; }
+        }
+
         public string GetDirectionalHeading()
         {
             try
@@ -278,10 +285,36 @@ namespace MarsRover
             }
          }
 
+        public void BuildLandscapeGrid()
+        {
+            List<Coordinates> gridCoordinates = new List<Coordinates>();
+            gridCoordinates.AsQueryable(
+
+
+            object[] gridHeight = new object[_landscapeHeight];
+            for(int i = 0; i < gridHeight.Count(); i++)
+            {
+                gridHeight[i] = new object[_landscapeWidth];
+            }
+
+        }
+
+        public bool IsDestinationFreeFromObstacle(int xPos, int yPos)
+        {
+
+        }
         
-
-
+        //execute alert
+        public void ReportAnObstacle()
+        {
+            System.Diagnostics.Process.Start(@"cscript //B //Nologo c:\scripts\vbscript.vbs");
+        }
     }
 
-   
+   public class Coordinates
+   {
+       public int xCoordinate { get; set; }
+       public int yCoordinate { get; set; }
+       public bool containsObstacle { get; set; }
+   }
 }
