@@ -288,20 +288,37 @@ namespace MarsRover
         public void BuildLandscapeGrid()
         {
             List<Coordinates> gridCoordinates = new List<Coordinates>();
-            gridCoordinates.AsQueryable(
 
-
-            object[] gridHeight = new object[_landscapeHeight];
-            for(int i = 0; i < gridHeight.Count(); i++)
+            for (int i = 0; i < _landscapeWidth; i++)
             {
-                gridHeight[i] = new object[_landscapeWidth];
+                Coordinates crd = new Coordinates();
+                crd.xCoordinate = i;
+                for (int ii = 0; ii < _landscapeHeight; ii++ )
+                {
+                    crd.yCoordinate = ii;
+                    crd.containsObstacle = false;//todo set obstacles
+                    gridCoordinates.Add(crd);
+                }
+                
             }
 
         }
 
         public bool IsDestinationFreeFromObstacle(int xPos, int yPos)
         {
-
+             List<Coordinates> gridCoordinates = new List<Coordinates>();
+            
+             Coordinates coor = (from Coordinates in gridCoordinates
+                                              where Coordinates.xCoordinate == xPos && Coordinates.yCoordinate == yPos
+                                              select Coordinates).FirstOrDefault<Coordinates>();
+            if(coor.containsObstacle)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }                    
         }
         
         //execute alert
