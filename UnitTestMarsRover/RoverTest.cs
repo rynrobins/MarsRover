@@ -65,8 +65,8 @@ namespace UnitTestMarsRover
             rover.PositionHeading = "E";
             rover.PositionX = 1;
             rover.PositionY = 0;
-            rover.LandscapeWidth = 2;
-            rover.LandscapeHeight = 2;
+            rover.LandscapeWidth = 3;
+            rover.LandscapeHeight = 3;
 
             rover.Command_Receiver("F");          
 
@@ -297,8 +297,8 @@ namespace UnitTestMarsRover
                 rover.Command_Receiver(s);
             }
 
-            Assert.AreEqual(3, rover.PositionY);
-            Assert.AreEqual(0, rover.PositionX);
+            Assert.AreEqual(2, rover.PositionY);
+            Assert.AreEqual(1, rover.PositionX);
         }
 
         [TestMethod]
@@ -356,7 +356,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 3;
             rover.LandscapeWidth = 3;
-
+                       
             Assert.AreEqual(4, rover.PositionY);
             Assert.AreEqual(3, rover.PositionX);
         }
