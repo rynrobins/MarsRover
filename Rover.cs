@@ -30,7 +30,9 @@ namespace MarsRover
                     {
                         //RR do not set a default heading.
                         //_positionHeadingIndex = 0;
-                        throw new IndexOutOfRangeException(string.Format("Heading is not part of the accepted headings. Heading {0}", value));
+                        string msg = string.Format("Heading is not part of the accepted headings. Heading {0}", value);
+                        ReturnMessage = msg;
+                        throw new IndexOutOfRangeException(msg);
                     }
                 }
             }
@@ -50,7 +52,9 @@ namespace MarsRover
                 }
                 else
                 {
-                    throw new IndexOutOfRangeException("Cannont set Rover in the positional direction because it is out of the accepted range.");
+                    string msg = string.Format("Cannont set Rover in the positional direction because it is out of the accepted range.");
+                    ReturnMessage = msg;
+                    throw new IndexOutOfRangeException(msg);
                 }
             }
         }
@@ -90,20 +94,51 @@ namespace MarsRover
             set { _fullLandscapeGrid = value; }
         }
 
+        public string _returnMessage;
+        public string ReturnMessage
+        {
+            get { return _returnMessage; }
+            set { _returnMessage = value; }
+        }
+
         public string GetDirectionalHeading()
         {
             try
             {
                 if (_positionHeadingIndex != null)
-                    return _headingDirectionalOrder[(int)_positionHeadingIndex];
+                {
+                    PositionHeading = _headingDirectionalOrder[(int)_positionHeadingIndex];
+                    return PositionHeading;
+                }
                 else
+                {
                     throw new NullReferenceException("Directional heading is null.");
+                }
             }
             catch (IndexOutOfRangeException ioore)
             {
-                throw new IndexOutOfRangeException("Direction is not int the range of accepted positions", ioore);
+                string msg = string.Format("Direction is not int the range of accepted positions");
+                ReturnMessage = msg;
+                throw new IndexOutOfRangeException(msg, ioore);
                
             }
+        }
+
+        public string Command_Parser(string command)
+        {
+            try
+            {
+                Command_Receiver(command);
+                
+            }
+            catch
+            {
+                //return error message
+                return ReturnMessage;
+                
+            }
+            //return coordinates and heading
+            return string.Format("Rover's current position is: coordinate({0},{1}), heading {2}", PositionX, PositionY, GetDirectionalHeading());
         }
 
         public void Command_Receiver(string command)
@@ -127,17 +162,23 @@ namespace MarsRover
                             Turn(command);
                             break;
                         default:
-                            throw new Exception(string.Format("Command receiver does not have a process for command: {0}", command));
+                            string msg = string.Format("Command receiver does not have a process for command: {0}", command);
+                            ReturnMessage = msg;
+                            throw new Exception(msg);
                     }
                 }
                 catch
                 {
-                    throw new Exception(string.Format("Command receiver invalid command: {0}", command));
+                    string msg = string.Format("Command receiver invalid command: {0}", command);
+                    ReturnMessage = msg;
+                    throw new Exception(msg);
                 }
             }
             else
             {
-                throw new IndexOutOfRangeException("Command is not part of the accepted commands.");
+                string msg = string.Format("Command is not part of the accepted commands.");
+                ReturnMessage = msg;
+                throw new IndexOutOfRangeException(msg);
             }
 
         }
@@ -161,7 +202,9 @@ namespace MarsRover
             }
             else
             {
-                throw new Exception(string.Format("Rover drive does not have a process for command: {0}", command));
+                string msg = string.Format("Rover drive does not have a process for command: {0}", command);
+                ReturnMessage = msg;
+                throw new Exception(msg);
             }
         }
         public void Drive_Forward()
@@ -259,7 +302,9 @@ namespace MarsRover
             }
             else 
             {
-                throw new Exception(string.Format("Rover turn does not have a process for command: {0}", command));
+                string msg = string.Format("Rover turn does not have a process for command: {0}", command);
+                ReturnMessage = msg;
+                throw new Exception(msg);
             }
 
         }
@@ -291,17 +336,15 @@ namespace MarsRover
 
             for (int i = 0; i < _landscapeWidth; i++)
             {
-                Coordinates crd = new Coordinates();
-                crd.xCoordinate = i;
-                for (int ii = 0; ii < _landscapeHeight; ii++ )
+                for (int ii = 0; ii < _landscapeHeight; ii++)
                 {
+                    Coordinates crd = new Coordinates();
+                    crd.xCoordinate = i;
                     crd.yCoordinate = ii;
                     crd.containsObstacle = false;//todo set obstacles
                     gridCoordinates.Add(crd);
-                }
-                
+                }                
             }
-
         }
 
         public bool IsDestinationFreeFromObstacle(int xPos, int yPos)
@@ -324,7 +367,7 @@ namespace MarsRover
         //execute alert
         public void ReportAnObstacle()
         {
-            System.Diagnostics.Process.Start(@"cscript //B //Nologo c:\scripts\vbscript.vbs");
+            //System.Diagnostics.Process.Start(@"cscript //B //Nologo c:\scripts\vbscript.vbs");
         }
     }
 
