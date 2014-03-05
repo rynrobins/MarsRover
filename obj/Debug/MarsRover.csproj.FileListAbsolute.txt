@@ -3,3 +3,7 @@ C:\MarsRover2\MarsRover\bin\Debug\MarsRover.pdb
 C:\MarsRover2\MarsRover\obj\Debug\MarsRover.dll
 C:\MarsRover2\MarsRover\obj\Debug\MarsRover.pdb
 C:\MarsRover2\MarsRover\obj\Debug\MarsRover.csprojResolveAssemblyReference.cache
+M:\MarsRover2\MarsRover\bin\Debug\MarsRover.dll
+M:\MarsRover2\MarsRover\bin\Debug\MarsRover.pdb
+M:\MarsRover2\MarsRover\obj\Debug\MarsRover.dll
+M:\MarsRover2\MarsRover\obj\Debug\MarsRover.pdb
