@@ -29,14 +29,19 @@ namespace RoverConsole
 
             rover.LandscapeWidth = 15;
             rover.LandscapeHeight = 5;
+            rover.BuildLandscapeGrid();
             
             while (keyInput != "q" && keyInput != "Q")
             {
                 char[] cmds = keyInput.ToCharArray();
                 string outputMessage = "";
-                foreach(char c in cmds)
-                {  
-                    outputMessage = rover.Command_Parser(c.ToString());
+                while (!rover.ObstacleFound)
+                {
+                    foreach (char c in cmds)
+                    {
+                        outputMessage = rover.Command_Parser(c.ToString());
+                    }
+                    break;
                 }
                 Console.WriteLine(outputMessage + "\n");
                 Console.WriteLine(string.Format("\rRover ready for command ({0}):", commands));
