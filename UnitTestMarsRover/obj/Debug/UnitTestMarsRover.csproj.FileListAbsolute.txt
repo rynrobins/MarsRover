@@ -5,3 +5,17 @@ C:\MarsRover2\UnitTestMarsRover\bin\Debug\MarsRover.pdb
 C:\MarsRover2\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.csprojResolveAssemblyReference.cache
 C:\MarsRover2\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.dll
 C:\MarsRover2\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.pdb
+M:\MarsRover2\UnitTestMarsRover\bin\Debug\UnitTestMarsRover.dll
+M:\MarsRover2\UnitTestMarsRover\bin\Debug\UnitTestMarsRover.pdb
+M:\MarsRover2\UnitTestMarsRover\bin\Debug\MarsRover.dll
+M:\MarsRover2\UnitTestMarsRover\bin\Debug\MarsRover.pdb
+M:\MarsRover2\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.csprojResolveAssemblyReference.cache
+M:\MarsRover2\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.dll
+M:\MarsRover2\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.pdb
+M:\Rover\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.csprojResolveAssemblyReference.cache
+M:\Rover\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.dll
+M:\Rover\UnitTestMarsRover\bin\Debug\UnitTestMarsRover.dll
+M:\Rover\UnitTestMarsRover\bin\Debug\UnitTestMarsRover.pdb
+M:\Rover\UnitTestMarsRover\bin\Debug\MarsRover.dll
+M:\Rover\UnitTestMarsRover\bin\Debug\MarsRover.pdb
+M:\Rover\UnitTestMarsRover\obj\Debug\UnitTestMarsRover.pdb
