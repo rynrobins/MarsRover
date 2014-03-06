@@ -227,44 +227,44 @@ namespace MarsRover
                 switch (GetDirectionalHeading())
                 {
                     case "N":
-                        int testCoordinate_N = (_position_Y + 1) > _landscapeHeight ? 0 : _position_Y + 1;
-                        if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_N))
-                        {
+                        //int testCoordinate_N = (_position_Y + 1) > _landscapeHeight ? 0 : _position_Y + 1;
+                        //if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_N))
+                        //{
                             _position_Y++;
-                        }
+                        //}
                         if (PositionY > _landscapeHeight)
                         {
                             PositionY = 0;
                         }
                         break;
                     case "E":
-                        int testCoordinate_E = (_position_X + 1) > LandscapeWidth ? 0 : _position_X + 1;
-                        if (IsDestinationFreeFromObstacle(testCoordinate_E, _position_Y))
-                        {
+                        //int testCoordinate_E = (_position_X + 1) > LandscapeWidth ? 0 : _position_X + 1;
+                        //if (IsDestinationFreeFromObstacle(testCoordinate_E, _position_Y))
+                        //{
                             _position_X++;
-                        }
+                        //}
                         if (PositionX > _landscapeWidth)
                         {
                             PositionX = 0;
                         }
                         break;
                     case "S":
-                        int testCoordinate_S = (_position_Y - 1 < 0) ? _landscapeHeight : _position_Y - 1;
-                        if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_S))
-                        {
+                        //int testCoordinate_S = (_position_Y - 1 < 0) ? _landscapeHeight : _position_Y - 1;
+                        //if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_S))
+                        //{
                             _position_Y--;
-                        }
+                        //}
                         if (_position_Y < 0)
                         {
                             _position_Y = _landscapeHeight;
                         }
                         break;
                     case "W":
-                        int testCoordinate_X = (_position_X - 1 < 0) ? _landscapeWidth : _position_X - 1;
-                        if (IsDestinationFreeFromObstacle(testCoordinate_X, _position_Y))
-                        {
+                        //int testCoordinate_X = (_position_X - 1 < 0) ? _landscapeWidth : _position_X - 1;
+                        //if (IsDestinationFreeFromObstacle(testCoordinate_X, _position_Y))
+                        //{
                             _position_X--;
-                        }
+                        //}
                         if (_position_X < 0)
                         {
                             _position_X = _landscapeWidth;
@@ -287,44 +287,44 @@ namespace MarsRover
             switch (GetDirectionalHeading())
             {
                 case "N":
-                    testCoordinate = _position_Y - 1 < 0 ? _landscapeHeight : _position_Y - 1;
-                    if (IsDestinationFreeFromObstacle(_position_X, testCoordinate))
-                    {
+                    //testCoordinate = _position_Y - 1 < 0 ? _landscapeHeight : _position_Y - 1;
+                    //if (IsDestinationFreeFromObstacle(_position_X, testCoordinate))
+                    //{
                         _position_Y--;
-                    }                  
+                   // }                  
                     if (_position_Y < 0)
                     {
                         _position_Y = _landscapeHeight;
                     }
                     break;
                 case "E":
-                    testCoordinate = _position_X - 1 < 0 ? _landscapeWidth : _position_X - 1;
-                    if (IsDestinationFreeFromObstacle(testCoordinate, _position_Y))
-                    {
+                    //testCoordinate = _position_X - 1 < 0 ? _landscapeWidth : _position_X - 1;
+                    //if (IsDestinationFreeFromObstacle(testCoordinate, _position_Y))
+                    //{
                         _position_X--;
-                    }
+                    //}
                     if (_position_X < 0)
                     {
                         _position_X = _landscapeWidth;
                     }
                     break;
                 case "S":
-                    testCoordinate = _position_Y + 1 > _landscapeHeight ? 0 : _position_Y + 1;
-                    if (IsDestinationFreeFromObstacle(_position_X, testCoordinate))
-                    {
+                    //testCoordinate = _position_Y + 1 > _landscapeHeight ? 0 : _position_Y + 1;
+                    //if (IsDestinationFreeFromObstacle(_position_X, testCoordinate))
+                    //{
                         _position_Y++;
-                    }
+                    //}
                     if (_position_Y > _landscapeHeight)
                     {
                         _position_Y = 0;
                     }
                     break;
                 case "W":
-                    testCoordinate = _position_X + 1 > _landscapeWidth ? 0 : _position_X + 1;
-                    if (IsDestinationFreeFromObstacle(testCoordinate, _position_Y))
-                    {
+                    //testCoordinate = _position_X + 1 > _landscapeWidth ? 0 : _position_X + 1;
+                    //if (IsDestinationFreeFromObstacle(testCoordinate, _position_Y))
+                    //{
                         _position_X++;
-                    }
+                    //}
                     if (_position_X > _landscapeWidth)
                     {
                         _position_X = 0;
@@ -404,7 +404,7 @@ namespace MarsRover
                         }
                         else
                         {
-                            crd.containsObstacle = false;//todo set obstacles
+                            crd.containsObstacle = false;
                         }
                     }
                     else
