@@ -12,7 +12,7 @@ namespace MarsRover
         public List<string> _headingDirectionalOrder = new List<string>() { "N", "E", "S", "W" };
         List<string> acceptedDriveCommands = new List<string>() { "f", "F", "b", "B" };
         List<string> acceptedTurnCommands = new List<string>() { "r", "R", "l" ,"L" };
-        List<Coordinates> gridCoordinates = new List<Coordinates>();
+        public List<Coordinates> gridCoordinates = new List<Coordinates>();
        
         public string _positionHeading;
         public string PositionHeading
