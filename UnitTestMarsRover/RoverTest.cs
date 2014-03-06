@@ -361,5 +361,32 @@ namespace UnitTestMarsRover
             Assert.AreEqual(3, rover.PositionX);
         }
 
+        [TestMethod]
+        public void Test_For_Obstacle_Detection()
+        {
+            Rover rover = new Rover();
+            rover.PositionHeading = "E";
+            rover.PositionY = 0;
+            rover.PositionX = 0;
+
+            rover.LandscapeHeight = 5;
+            rover.LandscapeWidth = 5;
+            rover.BuildLandscapeGrid();
+
+            string rtnMessage = "";
+            char[] cmds = ("ffrffrrbblff").ToCharArray();
+            while (!rover.ObstacleFound)
+            {
+                foreach (char c in cmds)
+                {
+                    rtnMessage = rover.Command_Parser(c.ToString());
+                }
+                break;
+            }
+
+            Assert.AreEqual(rtnMessage.Contains("Obstacle"), true);
+
+        }
+
     }
 }
