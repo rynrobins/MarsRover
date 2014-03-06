@@ -227,44 +227,60 @@ namespace MarsRover
                 switch (GetDirectionalHeading())
                 {
                     case "N":
-                        //int testCoordinate_N = (_position_Y + 1) > _landscapeHeight ? 0 : _position_Y + 1;
-                        //if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_N))
-                        //{
+                        int testCoordinate_N = _position_Y + 1;
+                        if (testCoordinate_N > _landscapeHeight)
+                        {
+                            testCoordinate_N = 0;
+                        }
+                        if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_N))
+                        {
                             _position_Y++;
-                        //}
+                        }
                         if (PositionY > _landscapeHeight)
                         {
                             PositionY = 0;
                         }
                         break;
                     case "E":
-                        //int testCoordinate_E = (_position_X + 1) > LandscapeWidth ? 0 : _position_X + 1;
-                        //if (IsDestinationFreeFromObstacle(testCoordinate_E, _position_Y))
-                        //{
+                        int testCoordinate_E = _position_X + 1;
+                        if (testCoordinate_E > _landscapeWidth)
+                        {
+                            testCoordinate_E = 0;
+                        }
+                        if (IsDestinationFreeFromObstacle(testCoordinate_E, _position_Y))
+                        {
                             _position_X++;
-                        //}
+                        }
                         if (PositionX > _landscapeWidth)
                         {
                             PositionX = 0;
                         }
                         break;
                     case "S":
-                        //int testCoordinate_S = (_position_Y - 1 < 0) ? _landscapeHeight : _position_Y - 1;
-                        //if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_S))
-                        //{
+                        int testCoordinate_S = _position_Y - 1;
+                        if (testCoordinate_S < 0)
+                        {
+                            testCoordinate_S = _landscapeHeight;
+                        }
+                        if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_S))
+                        {
                             _position_Y--;
-                        //}
+                        }
                         if (_position_Y < 0)
                         {
                             _position_Y = _landscapeHeight;
                         }
                         break;
                     case "W":
-                        //int testCoordinate_X = (_position_X - 1 < 0) ? _landscapeWidth : _position_X - 1;
-                        //if (IsDestinationFreeFromObstacle(testCoordinate_X, _position_Y))
-                        //{
+                        int testCoordinate_W = _position_X - 1;
+                        if (testCoordinate_W < 0)
+                        {
+                            testCoordinate_W = _landscapeWidth;
+                        }
+                        if (IsDestinationFreeFromObstacle(testCoordinate_W, _position_Y))
+                        {
                             _position_X--;
-                        //}
+                        }
                         if (_position_X < 0)
                         {
                             _position_X = _landscapeWidth;
@@ -398,7 +414,7 @@ namespace MarsRover
                     if (buildWithRandomObstacles)
                     {
                         Random random = new Random();
-                        if (random.Next(11) > 3)
+                        if (random.Next(20) > 3)
                         {
                             crd.containsObstacle = true;
                         }
