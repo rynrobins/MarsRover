@@ -362,6 +362,30 @@ namespace UnitTestMarsRover
         }
 
         [TestMethod]
+        public void Test_Confirm_Grid_Has_Obstacles()
+        {
+            Rover rover = new Rover();
+            rover.PositionHeading = "E";
+            rover.PositionY = 0;
+            rover.PositionX = 0;
+
+            rover.LandscapeHeight = 5;
+            rover.LandscapeWidth = 5;
+            rover.BuildLandscapeGrid();
+            bool containsObstacle = false;
+
+            foreach(Coordinates c in rover.gridCoordinates)
+            {
+                if(c.containsObstacle)
+                {
+                    containsObstacle = true;
+                }
+            }
+
+            Assert.AreEqual(true, containsObstacle);
+        }
+
+        [TestMethod]
         public void Test_For_Obstacle_Detection()
         {
             Rover rover = new Rover();
