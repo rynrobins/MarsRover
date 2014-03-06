@@ -238,7 +238,7 @@ namespace MarsRover
                         }
                         break;
                     case "E":
-                        int testCoordinate_E = (_position_X + 1) > _landscapeWidth ? 0 : _position_X + 1;
+                        int testCoordinate_E = (_position_X + 1) > LandscapeWidth ? 0 : _position_X + 1;
                         if (IsDestinationFreeFromObstacle(testCoordinate_E, _position_Y))
                         {
                             _position_X++;
@@ -414,22 +414,29 @@ namespace MarsRover
         }
 
         public bool IsDestinationFreeFromObstacle(int xPos, int yPos)
-        {             
-            
-             Coordinates coor = (from Coordinates in gridCoordinates
-                                              where Coordinates.xCoordinate == xPos && Coordinates.yCoordinate == yPos
-                                              select Coordinates).FirstOrDefault<Coordinates>();
-            if(coor.containsObstacle)
+        {
+            try
             {
-                //report obstacle
-                ReturnMessage = string.Format("Obstacle found at coordinate: ({0},{1}), current position: ({2},{3}), heading: {4}", xPos, yPos, PositionX, PositionY, PositionHeading);
-                ObstacleFound = true;
-                return false;
+
+                Coordinates coor = (from Coordinates in gridCoordinates
+                                    where Coordinates.xCoordinate == xPos && Coordinates.yCoordinate == yPos
+                                    select Coordinates).FirstOrDefault<Coordinates>();
+                if (coor.containsObstacle)
+                {
+                    //report obstacle
+                    ReturnMessage = string.Format("Obstacle found at coordinate: ({0},{1}), current position: ({2},{3}), heading: {4}", xPos, yPos, PositionX, PositionY, PositionHeading);
+                    ObstacleFound = true;
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
-            else
+            catch
             {
                 return true;
-            }                    
+            }
         }
         
         //execute alert
