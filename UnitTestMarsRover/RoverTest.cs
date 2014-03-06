@@ -384,7 +384,7 @@ namespace UnitTestMarsRover
                 break;
             }
 
-            Assert.AreEqual(rtnMessage.Contains("Obstacle"), true);
+            Assert.AreEqual(rtnMessage != null, true);
 
         }
 
