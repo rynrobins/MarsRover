@@ -109,6 +109,13 @@ namespace MarsRover
             set { _obstacleFound = value; }
         }
 
+        private bool _reportObstacle;
+        public bool ReportObstacle
+        {
+            get { return _reportObstacle; }
+            set { _reportObstacle = value; }
+        }
+
 
         public string GetDirectionalHeading()
         {
@@ -149,6 +156,7 @@ namespace MarsRover
             //return coordinates and heading
             if(ObstacleFound)
             {
+                ReportObstacle = true;
                 return ReturnMessage;
             }
             return string.Format("Rover's current position is: coordinate({0},{1}), heading {2}", PositionX, PositionY, GetDirectionalHeading());
@@ -227,14 +235,14 @@ namespace MarsRover
                 switch (GetDirectionalHeading())
                 {
                     case "N":
-                        int testCoordinate_N = _position_Y + 1;
+                        int testCoordinate_N = PositionY + 1;
                         if (testCoordinate_N > _landscapeHeight)
                         {
                             testCoordinate_N = 0;
                         }
-                        if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_N))
+                        if (IsDestinationFreeFromObstacle(PositionX, testCoordinate_N))
                         {
-                            _position_Y++;
+                            PositionY++;
                         }
                         if (PositionY > _landscapeHeight)
                         {
@@ -242,14 +250,14 @@ namespace MarsRover
                         }
                         break;
                     case "E":
-                        int testCoordinate_E = _position_X + 1;
+                        int testCoordinate_E = PositionX + 1;
                         if (testCoordinate_E > _landscapeWidth)
                         {
                             testCoordinate_E = 0;
                         }
-                        if (IsDestinationFreeFromObstacle(testCoordinate_E, _position_Y))
+                        if (IsDestinationFreeFromObstacle(testCoordinate_E, PositionY))
                         {
-                            _position_X++;
+                            PositionX++;
                         }
                         if (PositionX > _landscapeWidth)
                         {
@@ -257,33 +265,33 @@ namespace MarsRover
                         }
                         break;
                     case "S":
-                        int testCoordinate_S = _position_Y - 1;
+                        int testCoordinate_S = PositionY - 1;
                         if (testCoordinate_S < 0)
                         {
                             testCoordinate_S = _landscapeHeight;
                         }
-                        if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_S))
+                        if (IsDestinationFreeFromObstacle(PositionX, testCoordinate_S))
                         {
-                            _position_Y--;
+                            PositionY--;
                         }
-                        if (_position_Y < 0)
+                        if (PositionY < 0)
                         {
-                            _position_Y = _landscapeHeight;
+                            PositionY = _landscapeHeight;
                         }
                         break;
                     case "W":
-                        int testCoordinate_W = _position_X - 1;
+                        int testCoordinate_W = PositionX - 1;
                         if (testCoordinate_W < 0)
                         {
                             testCoordinate_W = _landscapeWidth;
                         }
-                        if (IsDestinationFreeFromObstacle(testCoordinate_W, _position_Y))
+                        if (IsDestinationFreeFromObstacle(testCoordinate_W, PositionY))
                         {
-                            _position_X--;
+                            PositionX--;
                         }
-                        if (_position_X < 0)
+                        if (PositionX < 0)
                         {
-                            _position_X = _landscapeWidth;
+                            PositionX = _landscapeWidth;
                         }
                         break;
                     default:
@@ -444,7 +452,7 @@ namespace MarsRover
                 if (coor.containsObstacle)
                 {
                     //report obstacle
-                    ReturnMessage = string.Format("Obstacle found at coordinate: ({0},{1}), current position: ({2},{3}), heading: {4}", xPos, yPos, PositionX, PositionY, PositionHeading);
+                    ReturnMessage = string.Format("Obstacle found at coordinate: ({0},{1}), current position: ({2},{3}), heading: {4}", xPos, yPos, PositionX, PositionY, GetDirectionalHeading());
                     ObstacleFound = true;
                     return false;
                 }
@@ -459,11 +467,7 @@ namespace MarsRover
             //}
         }
         
-        //execute alert
-        public void ReportAnObstacle()
-        {
-            //System.Diagnostics.Process.Start(@"cscript //B //Nologo c:\scripts\vbscript.vbs");
-        }
+      
     }
 
    public class Coordinates
