@@ -384,7 +384,7 @@ namespace UnitTestMarsRover
                 break;
             }
 
-            Assert.AreEqual(rover.ObstacleFound, true);
+            Assert.AreEqual(true, rover.ObstacleFound);
 
         }
 
