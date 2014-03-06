@@ -380,7 +380,7 @@ namespace MarsRover
                     crd.yCoordinate = ii;
                     //for now set random obstacles
                     Random random = new Random();
-                    if(random.Next(11) > 5)
+                    if(random.Next(11) > 3)
                     {
                         crd.containsObstacle = true;
                     }
