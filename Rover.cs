@@ -221,11 +221,13 @@ namespace MarsRover
             }
         }
         public void Drive_Forward()
-        {            
+        {
+            int testCoordinate;
             switch (GetDirectionalHeading())
             {
                 case "N":
-                    if (IsDestinationFreeFromObstacle(_position_X, _position_Y + 1 > _landscapeHeight ? 0 : _position_Y + 1 ))
+                    int testCoordinate_N = _position_Y + 1 > _landscapeHeight ? 0 : _position_Y + 1;
+                    if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_N))
                     {
                         _position_Y++;
                     }
@@ -235,7 +237,8 @@ namespace MarsRover
                     }
                     break;
                 case "E":
-                    if (IsDestinationFreeFromObstacle(_position_X + 1 > _landscapeWidth ? 0 : _position_X + 1, _position_Y))
+                    testCoordinate = _position_X + 1 > _landscapeWidth ? 0 : _position_X + 1;
+                    if (IsDestinationFreeFromObstacle(testCoordinate, _position_Y))
                     {
                         _position_X++;
                     }
@@ -245,7 +248,8 @@ namespace MarsRover
                     }
                     break;
                 case "S":
-                    if (IsDestinationFreeFromObstacle(_position_X, _position_Y - 1 < 0 ? _landscapeHeight : _position_Y - 1))
+                    testCoordinate = _position_Y - 1 < 0 ? _landscapeHeight : _position_Y - 1;
+                    if (IsDestinationFreeFromObstacle(_position_X,testCoordinate))
                     {
                         _position_Y--;
                     }
@@ -255,7 +259,8 @@ namespace MarsRover
                     }
                     break;
                 case "W":
-                    if (IsDestinationFreeFromObstacle(_position_X - 1 < 0 ? _landscapeWidth : _position_X - 1, _position_Y))
+                    testCoordinate = _position_X - 1 < 0 ? _landscapeWidth : _position_X - 1;
+                    if (IsDestinationFreeFromObstacle(testCoordinate, _position_Y))
                     {
                         _position_X--;
                     }
@@ -272,10 +277,12 @@ namespace MarsRover
 
         public void Drive_Reverse()
         {
+            int testCoordinate;
             switch (GetDirectionalHeading())
             {
                 case "N":
-                    if (IsDestinationFreeFromObstacle(_position_X, _position_Y - 1 < 0 ? _landscapeHeight : _position_Y - 1))
+                    testCoordinate = _position_Y - 1 < 0 ? _landscapeHeight : _position_Y - 1;
+                    if (IsDestinationFreeFromObstacle(_position_X, testCoordinate))
                     {
                         _position_Y--;
                     }                  
@@ -285,7 +292,8 @@ namespace MarsRover
                     }
                     break;
                 case "E":
-                    if (IsDestinationFreeFromObstacle(_position_X - 1 < 0 ? _landscapeWidth : _position_X - 1, _position_Y))
+                    testCoordinate = _position_X - 1 < 0 ? _landscapeWidth : _position_X - 1;
+                    if (IsDestinationFreeFromObstacle(testCoordinate, _position_Y))
                     {
                         _position_X--;
                     }
@@ -295,7 +303,8 @@ namespace MarsRover
                     }
                     break;
                 case "S":
-                    if (IsDestinationFreeFromObstacle(_position_X, _position_Y + 1 > _landscapeHeight ? 0 : _position_Y + 1))
+                    testCoordinate = _position_Y + 1 > _landscapeHeight ? 0 : _position_Y + 1;
+                    if (IsDestinationFreeFromObstacle(_position_X, testCoordinate))
                     {
                         _position_Y++;
                     }
@@ -305,7 +314,8 @@ namespace MarsRover
                     }
                     break;
                 case "W":
-                    if (IsDestinationFreeFromObstacle(_position_X + 1 > _landscapeWidth ? 0 : _position_X + 1, _position_Y))
+                    testCoordinate = _position_X + 1 > _landscapeWidth ? 0 : _position_X + 1;
+                    if (IsDestinationFreeFromObstacle(testCoordinate, _position_Y))
                     {
                         _position_X++;
                     }
