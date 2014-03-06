@@ -407,6 +407,10 @@ namespace MarsRover
                             crd.containsObstacle = false;//todo set obstacles
                         }
                     }
+                    else
+                    {
+                        crd.containsObstacle = false;
+                    }
                     
                     gridCoordinates.Add(crd);
                 }                
