@@ -367,7 +367,7 @@ namespace MarsRover
             }
          }
 
-        public void BuildLandscapeGrid()
+        public void BuildLandscapeGrid(bool buildWithRandomObstacles)
         {
             gridCoordinates = new List<Coordinates>();
 
@@ -379,15 +379,18 @@ namespace MarsRover
                     crd.xCoordinate = i;
                     crd.yCoordinate = ii;
                     //for now set random obstacles
-                    Random random = new Random();
-                    if(random.Next(11) > 3)
+                    if (buildWithRandomObstacles)
                     {
-                        crd.containsObstacle = true;
+                        Random random = new Random();
+                        if (random.Next(11) > 3)
+                        {
+                            crd.containsObstacle = true;
+                        }
+                        else
+                        {
+                            crd.containsObstacle = false;//todo set obstacles
+                        }
                     }
-                    else
-                    {
-                        crd.containsObstacle = false;//todo set obstacles
-                    }                    
                     
                     gridCoordinates.Add(crd);
                 }                
