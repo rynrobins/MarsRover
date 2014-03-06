@@ -355,6 +355,28 @@ namespace UnitTestMarsRover
             Assert.AreEqual(1, rover.PositionX);
 
         }
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void Test_Wrapping_On_3_X_3_Grid_Catch_Exception()
+        {
+            Rover rover = new Rover();
+            rover.PositionHeading = "E";
+            rover.PositionY = 0;
+            rover.PositionX = 0;
+
+            rover.LandscapeHeight = 3;
+            rover.LandscapeWidth = 3;
+            rover.BuildLandscapeGrid(false);
+
+            string[] commands = new string[] { "F", "F", "F", "F" };
+
+            foreach (string s in commands)
+            {
+                //rover.Command_Receiver(s);
+                rover.Drive_Forward();
+            }           
+
+        }
 
         [TestMethod]
         public void Test_Get_Set_The_Grid()
