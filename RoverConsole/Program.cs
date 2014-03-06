@@ -29,7 +29,7 @@ namespace RoverConsole
 
             rover.LandscapeWidth = 15;
             rover.LandscapeHeight = 5;
-            rover.BuildLandscapeGrid();
+            rover.BuildLandscapeGrid(true);
             
             while (keyInput != "q" && keyInput != "Q")
             {

@@ -51,6 +51,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeWidth = 2;
             rover.LandscapeHeight = 2;
+            rover.BuildLandscapeGrid(false);
 
             rover.Command_Receiver("f");
 
@@ -67,6 +68,7 @@ namespace UnitTestMarsRover
             rover.PositionY = 0;
             rover.LandscapeWidth = 3;
             rover.LandscapeHeight = 3;
+            rover.BuildLandscapeGrid(false);
 
             rover.Command_Receiver("F");          
 
@@ -83,6 +85,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeWidth = 2;
             rover.LandscapeHeight = 2;
+            rover.BuildLandscapeGrid(false);
 
             rover.Command_Receiver("F");
 
@@ -99,6 +102,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeWidth = 2;
             rover.LandscapeHeight = 2;
+            rover.BuildLandscapeGrid(false);
 
             rover.Command_Receiver("F");
 
@@ -115,6 +119,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeWidth = 2;
             rover.LandscapeHeight = 2;
+            rover.BuildLandscapeGrid(false);
 
             rover.Command_Receiver("b");
 
@@ -131,6 +136,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeWidth = 10;
             rover.LandscapeHeight = 2;
+            rover.BuildLandscapeGrid(false);
 
             rover.Command_Receiver("B");
 
@@ -147,6 +153,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeWidth = 3;
             rover.LandscapeHeight = 3;
+            rover.BuildLandscapeGrid(false);
 
             rover.Command_Receiver("B");
 
@@ -163,6 +170,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeWidth = 10;
             rover.LandscapeHeight = 2;
+            rover.BuildLandscapeGrid(false);
 
             rover.Command_Receiver("b");
 
@@ -371,7 +379,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 5;
             rover.LandscapeWidth = 5;
-            rover.BuildLandscapeGrid();
+            rover.BuildLandscapeGrid(true);
             bool containsObstacle = false;
 
             foreach(Coordinates c in rover.gridCoordinates)
@@ -395,7 +403,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 5;
             rover.LandscapeWidth = 5;
-            rover.BuildLandscapeGrid();
+            rover.BuildLandscapeGrid(true);
 
             string rtnMessage = "";
             char[] cmds = ("ffffrrffffllffffrrffff").ToCharArray();
