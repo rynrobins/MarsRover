@@ -53,8 +53,8 @@ namespace UnitTestMarsRover
             rover.LandscapeHeight = 2;
             rover.BuildLandscapeGrid(false);
 
-            rover.Command_Receiver("f");
-
+            //rover.Command_Receiver("f");
+            rover.Drive_Forward();
             Assert.AreEqual(1, rover.PositionY);
         }
 
