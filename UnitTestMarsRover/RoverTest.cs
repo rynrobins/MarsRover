@@ -398,7 +398,7 @@ namespace UnitTestMarsRover
             rover.BuildLandscapeGrid();
 
             string rtnMessage = "";
-            char[] cmds = ("ffrffrrbblff").ToCharArray();
+            char[] cmds = ("ffffrrffffllffffrrffff").ToCharArray();
             while (!rover.ObstacleFound)
             {
                 foreach (char c in cmds)
