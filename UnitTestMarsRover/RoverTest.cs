@@ -341,12 +341,14 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 3;
             rover.LandscapeWidth = 3;
+            rover.BuildLandscapeGrid(false);
 
             string[] commands = new string[] { "F", "F", "F", "F" };
 
             foreach (string s in commands)
             {
-                rover.Command_Receiver(s);
+                //rover.Command_Receiver(s);
+                rover.Drive_Forward();
             }
 
             Assert.AreEqual(0, rover.PositionY);
