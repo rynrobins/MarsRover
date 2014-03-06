@@ -395,8 +395,7 @@ namespace MarsRover
         }
 
         public bool IsDestinationFreeFromObstacle(int xPos, int yPos)
-        {
-             
+        {             
             
              Coordinates coor = (from Coordinates in gridCoordinates
                                               where Coordinates.xCoordinate == xPos && Coordinates.yCoordinate == yPos
