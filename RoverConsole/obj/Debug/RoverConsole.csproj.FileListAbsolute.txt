@@ -14,3 +14,11 @@ M:\Rover\RoverConsole\bin\Debug\MarsRover.pdb
 M:\Rover\RoverConsole\obj\Debug\RoverConsole.csprojResolveAssemblyReference.cache
 M:\Rover\RoverConsole\obj\Debug\RoverConsole.exe
 M:\Rover\RoverConsole\obj\Debug\RoverConsole.pdb
+F:\Rover\RoverConsole\bin\Debug\RoverConsole.exe.config
+F:\Rover\RoverConsole\obj\Debug\RoverConsole.exe
+F:\Rover\RoverConsole\obj\Debug\RoverConsole.pdb
+F:\Rover\RoverConsole\bin\Debug\RoverConsole.exe
+F:\Rover\RoverConsole\bin\Debug\RoverConsole.pdb
+F:\Rover\RoverConsole\bin\Debug\MarsRover.dll
+F:\Rover\RoverConsole\bin\Debug\MarsRover.pdb
+F:\Rover\RoverConsole\obj\Debug\RoverConsole.csprojResolveAssemblyReference.cache

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MarsRover;
+using System.Linq;
 
 namespace UnitTestMarsRover
 {
@@ -53,8 +54,8 @@ namespace UnitTestMarsRover
             rover.LandscapeHeight = 2;
             rover.BuildLandscapeGrid(false);
 
-            //rover.Command_Receiver("f");
-            rover.Drive_Forward();
+            rover.Command_Receiver("f");
+            //rover.Drive_Forward();
             Assert.AreEqual(1, rover.PositionY);
         }
 
@@ -275,6 +276,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 2;
             rover.LandscapeWidth = 2;
+            rover.BuildLandscapeGrid(false);
 
             string[] commands = new string[] { "F", "F", "F" };
 
@@ -297,6 +299,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 4;
             rover.LandscapeWidth = 4;
+            rover.BuildLandscapeGrid(false);
 
             string[] commands = new string[] { "F", "F","R", "F", "F" };
 
@@ -319,6 +322,7 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 3;
             rover.LandscapeWidth = 3;
+            rover.BuildLandscapeGrid(false);
 
             string[] commands = new string[] { "B", "B", "B", "L", "F" };
 
@@ -356,7 +360,7 @@ namespace UnitTestMarsRover
 
         }
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        //[ExpectedException(typeof(Exception))]
         public void Test_Wrapping_On_3_X_3_Grid_Catch_Exception()
         {
             Rover rover = new Rover();
@@ -422,26 +426,67 @@ namespace UnitTestMarsRover
         {
             Rover rover = new Rover();
             rover.PositionHeading = "E";
+            string headingIndex = rover.GetDirectionalHeading();
             rover.PositionY = 0;
             rover.PositionX = 0;
 
             rover.LandscapeHeight = 5;
             rover.LandscapeWidth = 5;
-            rover.BuildLandscapeGrid(true);
+            rover.BuildLandscapeGrid(false);
+
+            //set obstacle
+            Coordinates crd = new Coordinates{
+                 
+                 xCoordinate = 1,
+                 yCoordinate =0
+            };
+            Coordinates coor = (from Coordinates in rover.gridCoordinates
+                                where Coordinates.xCoordinate == 1 && Coordinates.yCoordinate == 0
+                                select Coordinates).FirstOrDefault<Coordinates>();
+            bool notNull = coor != null;
+            int indexOf = -1;
+            if(coor != null)
+            {
+                indexOf = rover.gridCoordinates.IndexOf(coor);
+            }
+           
+            
+            //int indexOf = rover.gridCoordinates.IndexOf(crd);
+            bool hasIndex = indexOf > 0;
+            if (hasIndex)
+            {
+                rover.gridCoordinates[indexOf].containsObstacle = true;
+            }
 
             string rtnMessage = "";
-            char[] cmds = ("ffffrrffffllffffrrffff").ToCharArray();
-            while (!rover.ObstacleFound)
+            char[] cmds = ("f").ToCharArray();
+            while (!rover.ReportObstacle)
             {
                 foreach (char c in cmds)
                 {
                     rtnMessage = rover.Command_Parser(c.ToString());
                 }
-                break;
+                //break;
             }
 
-            Assert.AreEqual(true, rtnMessage.Contains("Obstacle"));
+            Assert.AreEqual(true, rtnMessage.Contains("Obst"));
+            //Assert.AreEqual(true, rover.gridCoordinates[indexOf].containsObstacle);
 
+        }
+        [TestMethod]
+        public void Test_Check_Grid_Is_Creating_The_Correct_Number_Of_Spaces()
+        {
+            Rover rover = new Rover();
+            rover.PositionHeading = "E";
+            string headingIndex = rover.GetDirectionalHeading();
+            rover.PositionY = 0;
+            rover.PositionX = 0;
+
+            rover.LandscapeHeight = 5;
+            rover.LandscapeWidth = 5;
+            rover.BuildLandscapeGrid(false);
+
+            Assert.AreEqual(25, rover.gridCoordinates.Count());
         }
 
     }

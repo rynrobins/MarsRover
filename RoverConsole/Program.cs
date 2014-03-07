@@ -43,6 +43,7 @@ namespace RoverConsole
                     }
                     break;
                 }
+                rover.ObstacleFound = false;
                 Console.WriteLine(outputMessage + "\n");
                 Console.WriteLine(string.Format("\rRover ready for command ({0}):", commands));
                 keyInput = Console.ReadLine();
