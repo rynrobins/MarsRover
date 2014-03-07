@@ -437,7 +437,7 @@ namespace MarsRover
                     if (buildWithRandomObstacles)
                     {
                         Random random = new Random();
-                        if (random.Next(20) > 3)
+                        if (random.Next(11) > 3)
                         {
                             crd.containsObstacle = true;
                         }
