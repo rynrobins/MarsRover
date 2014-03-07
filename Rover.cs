@@ -10,8 +10,8 @@ namespace MarsRover
     {
         public List<string> acceptedCommands = new List<string>() {"f", "F", "b", "B", "r", "R", "l", "L" };
         public List<string> _headingDirectionalOrder = new List<string>() { "N", "E", "S", "W" };
-        List<string> acceptedDriveCommands = new List<string>() { "f", "F", "b", "B" };
-        List<string> acceptedTurnCommands = new List<string>() { "r", "R", "l" ,"L" };
+        public List<string> acceptedDriveCommands = new List<string>() { "f", "F", "b", "B" };
+        public List<string> acceptedTurnCommands = new List<string>() { "r", "R", "l" ,"L" };
         public List<Coordinates> gridCoordinates = new List<Coordinates>();
        
         public string _positionHeading;
@@ -28,9 +28,7 @@ namespace MarsRover
                         _positionHeadingIndex = _headingDirectionalOrder.IndexOf(value.ToUpper());
                     }
                     else
-                    {
-                        //RR do not set a default heading.
-                        //_positionHeadingIndex = 0;
+                    {                        
                         string msg = string.Format("Heading is not part of the accepted headings. Heading {0}", value);
                         ReturnMessage = msg;
                         throw new IndexOutOfRangeException(msg);
@@ -117,28 +115,7 @@ namespace MarsRover
         }
 
 
-        public string GetDirectionalHeading()
-        {
-            try
-            {
-                if (_positionHeadingIndex != null)
-                {
-                    PositionHeading = _headingDirectionalOrder[(int)_positionHeadingIndex];
-                    return PositionHeading;
-                }
-                else
-                {
-                    throw new NullReferenceException("Directional heading is null.");
-                }
-            }
-            catch (IndexOutOfRangeException ioore)
-            {
-                string msg = string.Format("Direction is not int the range of accepted positions");
-                ReturnMessage = msg;
-                throw new IndexOutOfRangeException(msg, ioore);
-               
-            }
-        }
+       
 
         public string Command_Parser(string command)
         {
@@ -159,7 +136,8 @@ namespace MarsRover
                 ReportObstacle = true;
                 return ReturnMessage;
             }
-            return string.Format("Rover's current position is: coordinate({0},{1}), heading {2}", PositionX, PositionY, GetDirectionalHeading());
+            Navigation navigation = new Navigation(this);
+            return string.Format("Rover's current position is: coordinate({0},{1}), heading {2}", PositionX, PositionY, navigation.GetDirectionalHeading());
         }
 
         public void Command_Receiver(string command)
@@ -168,19 +146,21 @@ namespace MarsRover
             {
                 try
                 {
+                    Drive _driveRover = new Drive(this);
+                    Turn _turnRover = new Turn(this);
                     switch(command.ToUpper())
                     {
                         case "F":
-                            Drive(command);
+                            _driveRover.Drive_Commands(command);
                             break;
                         case"B":
-                            Drive(command);
+                            _driveRover.Drive_Commands(command);
                             break;
                         case "R":
-                            Turn(command);
+                            _turnRover.Turn_Commands(command);
                             break;
                         case "L":
-                            Turn(command);
+                            _turnRover.Turn_Commands(command);
                             break;
                         default:
                             string msg = string.Format("Command receiver does not have a process for command: {0}", command);
@@ -204,291 +184,13 @@ namespace MarsRover
 
         }
 
-        public void Drive(string command)
-        {
-            if (acceptedDriveCommands.Contains(command))
-            {
-                switch (command.ToUpper())
-                {
-                    case "F":
-                        Drive_Forward();
-                        break;
-                    case "B":
-                        Drive_Reverse();
-                        break;
-                    default:
-                        //todo throw exception
-                        return;
-                }
-            }
-            else
-            {
-                string msg = string.Format("Rover drive does not have a process for command: {0}", command);
-                ReturnMessage = msg;
-                throw new Exception(msg);
-            }
-        }
-        public void Drive_Forward()
-        {
-            try
-            {
-                switch (GetDirectionalHeading())
-                {
-                    case "N":
-                        int testCoordinate_N = PositionY + 1;
-                        if (testCoordinate_N > _landscapeHeight)
-                        {
-                            testCoordinate_N = 0;
-                        }
-                        if (IsDestinationFreeFromObstacle(PositionX, testCoordinate_N))
-                        {
-                            PositionY++;
-                        }
-                        if (PositionY > _landscapeHeight)
-                        {
-                            PositionY = 0;
-                        }
-                        break;
-                    case "E":
-                        int testCoordinate_E = PositionX + 1;
-                        if (testCoordinate_E > _landscapeWidth)
-                        {
-                            testCoordinate_E = 0;
-                        }
-                        if (IsDestinationFreeFromObstacle(testCoordinate_E, PositionY))
-                        {
-                            PositionX++;
-                        }
-                        if (PositionX > _landscapeWidth)
-                        {
-                            PositionX = 0;
-                        }
-                        break;
-                    case "S":
-                        int testCoordinate_S = PositionY - 1;
-                        if (testCoordinate_S < 0)
-                        {
-                            testCoordinate_S = _landscapeHeight;
-                        }
-                        if (IsDestinationFreeFromObstacle(PositionX, testCoordinate_S))
-                        {
-                            PositionY--;
-                        }
-                        if (PositionY < 0)
-                        {
-                            PositionY = _landscapeHeight;
-                        }
-                        break;
-                    case "W":
-                        int testCoordinate_W = PositionX - 1;
-                        if (testCoordinate_W < 0)
-                        {
-                            testCoordinate_W = _landscapeWidth;
-                        }
-                        if (IsDestinationFreeFromObstacle(testCoordinate_W, PositionY))
-                        {
-                            PositionX--;
-                        }
-                        if (PositionX < 0)
-                        {
-                            PositionX = _landscapeWidth;
-                        }
-                        break;
-                    default:
+       
+       
 
-                        break;
-                }
-            }
-            catch(Exception ex)
-            {
-                throw new Exception("Drive_Forward error", ex);
-            }
-        }
-
-        public void Drive_Reverse()
-        {            
-            switch (GetDirectionalHeading())
-            {
-                case "N":
-                     int testCoordinate_N = PositionY - 1;
-                     if (testCoordinate_N < 0)
-                     {
-                         testCoordinate_N = _landscapeHeight;
-                     }
-                    if (IsDestinationFreeFromObstacle(PositionX, testCoordinate_N))
-                    {
-                        PositionY--;
-                    }                  
-                    if (PositionY < 0)
-                    {
-                        PositionY = _landscapeHeight;
-                    }
-                    break;
-                case "E":
-                    int testCoordinate_E = PositionX - 1;
-                    if(testCoordinate_E < 0)
-                    {
-                        testCoordinate_E = _landscapeWidth;
-                    }
-                    if (IsDestinationFreeFromObstacle(testCoordinate_E, PositionY))
-                    {
-                        PositionX--;
-                    }
-                    if (PositionX < 0)
-                    {
-                        PositionX = _landscapeWidth;
-                    }
-                    break;
-                case "S":
-                    int testCoordinate_S = PositionY + 1;
-                    if(testCoordinate_S > _landscapeHeight)
-                    {
-                        testCoordinate_S = 0;
-                    }
-                    if (IsDestinationFreeFromObstacle(_position_X, testCoordinate_S))
-                    {
-                        _position_Y++;
-                    }
-                    if (_position_Y > _landscapeHeight)
-                    {
-                        _position_Y = 0;
-                    }
-                    break;
-                case "W":
-                    int testCoordinate_W = _position_X + 1;
-                    if(testCoordinate_W > _landscapeWidth)
-                    {
-                        testCoordinate_W = 0;
-                    }
-                    if (IsDestinationFreeFromObstacle(testCoordinate_W, PositionY))
-                    {
-                        PositionX++;
-                    }
-                    if (PositionX > _landscapeWidth)
-                    {
-                        PositionX = 0;
-                    }
-                    break;
-                default:
-                    //todo throw exception
-                    break;
-            }
-        }
-
-        public void Turn(string command)
-        {
-            if (acceptedTurnCommands.Contains(command))
-            {
-                switch (command.ToUpper())
-                {
-                    case "R":
-                        Turn_Right();
-                        break;
-                    case "L":
-                        Turn_Left();
-                        break;
-                    default:
-                        //todo throw exception
-                        return;
-                }
-            }
-            else 
-            {
-                string msg = string.Format("Rover turn does not have a process for command: {0}", command);
-                ReturnMessage = msg;
-                throw new Exception(msg);
-            }
-
-        }
-
-        public void Turn_Right()
-        {
-            _positionHeadingIndex++;
-
-            if(_positionHeadingIndex > _headingDirectionalOrder.Count -1)
-            {
-                //treat the directional order like a loop and reset when it hits the end
-                _positionHeadingIndex = 0;
-            }
-        }
-
-        public void Turn_Left()
-        {
-            _positionHeadingIndex--;
-            if(_positionHeadingIndex < 0)
-            {
-                //treat the directional order like a loop and when it drops below set it the Last position in the array
-                _positionHeadingIndex = _headingDirectionalOrder.Count - 1;
-            }
-         }
-
-        public void BuildLandscapeGrid(bool buildWithRandomObstacles)
-        {
-            gridCoordinates = new List<Coordinates>();
-
-            for (int i = 0; i <= _landscapeWidth; i++)
-            {
-                for (int ii = 0; ii <= _landscapeHeight; ii++)
-                {
-                    Coordinates crd = new Coordinates();
-                    crd.xCoordinate = i;
-                    crd.yCoordinate = ii;
-                    //for now set random obstacles
-                    if (buildWithRandomObstacles)
-                    {
-                        Random random = new Random();
-                        if (random.Next(11) > 3)
-                        {
-                            crd.containsObstacle = true;
-                        }
-                        else
-                        {
-                            crd.containsObstacle = false;
-                        }
-                    }
-                    else
-                    {
-                        crd.containsObstacle = false;
-                    }
-                    
-                    gridCoordinates.Add(crd);
-                }                
-            }
-        }
-
-        public bool IsDestinationFreeFromObstacle(int xPos, int yPos)
-        {
-            //try
-            //{
-
-                Coordinates coor = (from Coordinates in gridCoordinates
-                                    where Coordinates.xCoordinate == xPos && Coordinates.yCoordinate == yPos
-                                    select Coordinates).FirstOrDefault<Coordinates>();
-                if (coor.containsObstacle)
-                {
-                    //report obstacle
-                    ReturnMessage = string.Format("Obstacle found at coordinate: {0},{1}, current position: {2},{3}, heading: {4}", xPos, yPos, PositionX, PositionY, GetDirectionalHeading());
-                    ObstacleFound = true;
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            //}
-            //catch
-            //{
-            //    return true;
-            //}
-        }
+       
         
       
     }
 
-   public class Coordinates
-   {
-       public int xCoordinate { get; set; }
-       public int yCoordinate { get; set; }
-       public bool containsObstacle { get; set; }
-   }
+
 }
