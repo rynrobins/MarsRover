@@ -15,3 +15,4 @@ F:\Rover\MarsRover\bin\Debug\MarsRover.dll
 F:\Rover\MarsRover\bin\Debug\MarsRover.pdb
 F:\Rover\MarsRover\obj\Debug\MarsRover.dll
 F:\Rover\MarsRover\obj\Debug\MarsRover.pdb
+M:\Rover\MarsRover\obj\Debug\MarsRover.csprojResolveAssemblyReference.cache

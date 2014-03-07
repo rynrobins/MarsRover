@@ -426,9 +426,9 @@ namespace MarsRover
         {
             gridCoordinates = new List<Coordinates>();
 
-            for (int i = 0; i < _landscapeWidth; i++)
+            for (int i = 0; i <= _landscapeWidth; i++)
             {
-                for (int ii = 0; ii < _landscapeHeight; ii++)
+                for (int ii = 0; ii <= _landscapeHeight; ii++)
                 {
                     Coordinates crd = new Coordinates();
                     crd.xCoordinate = i;
