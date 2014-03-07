@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover", "MarsRover\MarsRover.csproj", "{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoverConsole", "RoverConsole\RoverConsole.csproj", "{E9FA5007-8181-4AFE-B90B-79FE29C632D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestMarsRover", "UnitTestMarsRover\UnitTestMarsRover.csproj", "{1A3DC36D-E763-4D89-ABA6-417EF6DF21CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover", "MarsRover\MarsRover.csproj", "{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9FA5007-8181-4AFE-B90B-79FE29C632D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E9FA5007-8181-4AFE-B90B-79FE29C632D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9FA5007-8181-4AFE-B90B-79FE29C632D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{1A3DC36D-E763-4D89-ABA6-417EF6DF21CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A3DC36D-E763-4D89-ABA6-417EF6DF21CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A3DC36D-E763-4D89-ABA6-417EF6DF21CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18472F2B-4A7B-435C-BF00-FB9286C9CDD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
