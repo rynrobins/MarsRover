@@ -50,6 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Rover Drive Test.cs" />
+    <Compile Include="Rover Landscape Test.cs" />
+    <Compile Include="Rover Navigation Test.cs" />
+    <Compile Include="Rover Turn Test.cs" />
     <Compile Include="RoverTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,32 +7,7 @@ namespace UnitTestMarsRover
 {
     [TestClass]
     public class RoverTest
-    {
-        [TestMethod]
-        public void Test_Get_Rover_Directional_Heading()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "N";
-            string headingReturned;
-
-            headingReturned = rover.GetDirectionalHeading();
-
-            Assert.AreEqual("N", headingReturned);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(IndexOutOfRangeException))]        
-        public void Test_Give_Rover_A_Non_Directional_Heading()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "%";
-            string headingReturned;
-
-            headingReturned = rover.GetDirectionalHeading();
-
-            Assert.AreEqual(null, headingReturned);
-        }
-
+    {       
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Test_Rover_Only_Accepts_Vaild_Commands()
@@ -42,229 +17,6 @@ namespace UnitTestMarsRover
             rover.Command_Receiver("GO");
         }
 
-        [TestMethod]
-        public void Test_Rover_Drives_North_One_Space()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "N";
-            rover.PositionX = 0;
-            rover.PositionY = 0;
-
-            rover.LandscapeWidth = 2;
-            rover.LandscapeHeight = 2;
-            rover.BuildLandscapeGrid(false);
-
-            rover.Command_Receiver("f");
-            //rover.Drive_Forward();
-            Assert.AreEqual(1, rover.PositionY);
-        }
-
-        
-        [TestMethod]
-        public void Test_Rover_Drives_East_One_Space()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "E";
-            rover.PositionX = 1;
-            rover.PositionY = 0;
-            rover.LandscapeWidth = 3;
-            rover.LandscapeHeight = 3;
-            rover.BuildLandscapeGrid(false);
-
-            rover.Command_Receiver("F");          
-
-            Assert.AreEqual(2, rover.PositionX);
-        }
-
-        [TestMethod]
-        public void Test_Rover_Drives_South_One_Space()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "S";
-            rover.PositionX = 0;
-            rover.PositionY = 0;
-
-            rover.LandscapeWidth = 2;
-            rover.LandscapeHeight = 2;
-            rover.BuildLandscapeGrid(false);
-
-            rover.Command_Receiver("F");
-
-            Assert.AreEqual(1, rover.PositionY);
-        }
-
-        [TestMethod]
-        public void Test_Rover_Drives_West_One_Space()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "W";
-            rover.PositionX = 0;
-            rover.PositionY = 0;
-
-            rover.LandscapeWidth = 2;
-            rover.LandscapeHeight = 2;
-            rover.BuildLandscapeGrid(false);
-
-            rover.Command_Receiver("F");
-
-            Assert.AreEqual(1, rover.PositionX);
-        }
-
-        [TestMethod]
-        public void Test_Rover_Reverses_North_One_Space()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "S";
-            rover.PositionX = 0;
-            rover.PositionY = 0;
-
-            rover.LandscapeWidth = 2;
-            rover.LandscapeHeight = 2;
-            rover.BuildLandscapeGrid(false);
-
-            rover.Command_Receiver("b");
-
-            Assert.AreEqual(1, rover.PositionY);
-        }
-
-        [TestMethod]
-        public void Test_Rover_Reverses_East_One_Space()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "W";
-            rover.PositionX = 0;
-            rover.PositionY = 0;
-
-            rover.LandscapeWidth = 10;
-            rover.LandscapeHeight = 2;
-            rover.BuildLandscapeGrid(false);
-
-            rover.Command_Receiver("B");
-
-            Assert.AreEqual(1, rover.PositionX);
-        }
-
-        [TestMethod]
-        public void Test_Rover_Reverses_South_One_Space()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "N";
-            rover.PositionX = 0;
-            rover.PositionY = 2;
-
-            rover.LandscapeWidth = 3;
-            rover.LandscapeHeight = 3;
-            rover.BuildLandscapeGrid(false);
-
-            rover.Command_Receiver("B");
-
-            Assert.AreEqual(1, rover.PositionY);
-        }
-
-        [TestMethod]
-        public void Test_Rover_Reverses_West_One_Space()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "E";
-            rover.PositionX = 0;
-            rover.PositionY = 0;
-
-            rover.LandscapeWidth = 10;
-            rover.LandscapeHeight = 2;
-            rover.BuildLandscapeGrid(false);
-
-            rover.Command_Receiver("b");
-
-            Assert.AreEqual(9, rover.PositionX);
-        }
-
-        [TestMethod]
-        public void Test_Rover_Turns_North()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "W";
-
-            rover.Command_Parser("R");
-
-            Assert.AreEqual("N", rover.GetDirectionalHeading());
-        }
-
-        [TestMethod]
-        public void Test_Rover_Turns_East()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "n";
-
-            rover.Command_Parser("R");
-
-            Assert.AreEqual("E", rover.GetDirectionalHeading());
-        }
-
-        [TestMethod]
-        public void Test_Rover_Turns_South()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "E";
-
-            rover.Command_Receiver("R");
-
-            Assert.AreEqual("S", rover.GetDirectionalHeading());
-        }
-
-        [TestMethod]
-        public void Test_Rover_Turns_West()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "S";
-
-            rover.Command_Receiver("R");
-
-            Assert.AreEqual("W", rover.GetDirectionalHeading());
-        }
-
-        [TestMethod]
-        public void Test_Rover_Left_Turn_North()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "E";
-
-            rover.Command_Receiver("L");
-
-            Assert.AreEqual("N", rover.GetDirectionalHeading());
-        }
-
-        [TestMethod]
-        public void Test_Rover_Left_Turn_East()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "s";
-
-            rover.Command_Receiver("L");
-
-            Assert.AreEqual("E", rover.GetDirectionalHeading());
-        }
-
-        [TestMethod]
-        public void Test_Rover_Left_Turn_South()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "W";
-
-            rover.Command_Receiver("L");
-
-            Assert.AreEqual("S", rover.GetDirectionalHeading());
-        }
-
-        [TestMethod]
-        public void Test_Rover_Left_Turn_West_()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "N";
-
-            rover.Command_Receiver("L");
-
-            Assert.AreEqual("W", rover.GetDirectionalHeading());
-        }
 
         [TestMethod]
         public void Test_Rovers_Position_From_Multiple_Drive_Commands()
@@ -276,7 +28,8 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 2;
             rover.LandscapeWidth = 2;
-            rover.BuildLandscapeGrid(false);
+            Landscape landscape = new Landscape(rover);
+            landscape.BuildLandscapeGrid(false);
 
             string[] commands = new string[] { "F", "F", "F" };
 
@@ -299,7 +52,8 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 4;
             rover.LandscapeWidth = 4;
-            rover.BuildLandscapeGrid(false);
+            Landscape landscape = new Landscape(rover);
+            landscape.BuildLandscapeGrid(false);
 
             string[] commands = new string[] { "F", "F","R", "F", "F" };
 
@@ -322,7 +76,8 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 3;
             rover.LandscapeWidth = 3;
-            rover.BuildLandscapeGrid(false);
+            Landscape landscape = new Landscape(rover);
+            landscape.BuildLandscapeGrid(false);
 
             string[] commands = new string[] { "B", "B", "B", "L", "F" };
 
@@ -345,94 +100,59 @@ namespace UnitTestMarsRover
 
             rover.LandscapeHeight = 3;
             rover.LandscapeWidth = 3;
-            rover.BuildLandscapeGrid(false);
+            Landscape landscape = new Landscape(rover);
+            landscape.BuildLandscapeGrid(false);
 
             string[] commands = new string[] { "F", "F", "F", "F" };
 
             foreach (string s in commands)
             {
-                //rover.Command_Receiver(s);
-                rover.Drive_Forward();
+                rover.Command_Receiver(s);
+                //rover.Drive_Forward();
             }
 
             Assert.AreEqual(0, rover.PositionY);
             Assert.AreEqual(1, rover.PositionX);
 
         }
-        [TestMethod]
-        //[ExpectedException(typeof(Exception))]
-        public void Test_Wrapping_On_3_X_3_Grid_Catch_Exception()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "E";
-            rover.PositionY = 0;
-            rover.PositionX = 0;
+        //[TestMethod]
+        ////[ExpectedException(typeof(Exception))]
+        //public void Test_Wrapping_On_3_X_3_Grid_Catch_Exception()
+        //{
+        //    Rover rover = new Rover();
+        //    rover.PositionHeading = "E";
+        //    rover.PositionY = 0;
+        //    rover.PositionX = 0;
 
-            rover.LandscapeHeight = 3;
-            rover.LandscapeWidth = 3;
-            rover.BuildLandscapeGrid(false);
+        //    rover.LandscapeHeight = 3;
+        //    rover.LandscapeWidth = 3;
+        //    Landscape landscape = new Landscape(rover);
+        //    landscape.BuildLandscapeGrid(false);
 
-            string[] commands = new string[] { "F", "F", "F", "F" };
+        //    string[] commands = new string[] { "F", "F", "F", "F" };
 
-            foreach (string s in commands)
-            {
-                //rover.Command_Receiver(s);
-                rover.Drive_Forward();
-            }           
+        //    foreach (string s in commands)
+        //    {
+        //        rover.Command_Receiver(s);
+        //        //rover.Drive_Forward();
+        //    }           
 
-        }
-
-        [TestMethod]
-        public void Test_Get_Set_The_Grid()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "E";
-            rover.PositionY = 4;
-            rover.PositionX = 3;
-
-            rover.LandscapeHeight = 3;
-            rover.LandscapeWidth = 3;
-                       
-            Assert.AreEqual(4, rover.PositionY);
-            Assert.AreEqual(3, rover.PositionX);
-        }
-
-        [TestMethod]
-        public void Test_Confirm_Grid_Has_Obstacles()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "E";
-            rover.PositionY = 0;
-            rover.PositionX = 0;
-
-            rover.LandscapeHeight = 5;
-            rover.LandscapeWidth = 5;
-            rover.BuildLandscapeGrid(true);
-            bool containsObstacle = false;
-
-            foreach(Coordinates c in rover.gridCoordinates)
-            {
-                if(c.containsObstacle)
-                {
-                    containsObstacle = true;
-                }
-            }
-
-            Assert.AreEqual(true, containsObstacle);
-        }
+        //}       
 
         [TestMethod]
         public void Test_For_Obstacle_Detection()
         {
             Rover rover = new Rover();
             rover.PositionHeading = "E";
-            string headingIndex = rover.GetDirectionalHeading();
+            Navigation navigation = new Navigation(rover);
+            string headingIndex = navigation.GetDirectionalHeading();
             rover.PositionY = 0;
             rover.PositionX = 0;
 
             rover.LandscapeHeight = 5;
             rover.LandscapeWidth = 5;
-            rover.BuildLandscapeGrid(false);
+            Landscape landscape = new Landscape(rover);
+            landscape.BuildLandscapeGrid(false);
 
             //set obstacle
             Coordinates crd = new Coordinates{
@@ -470,24 +190,9 @@ namespace UnitTestMarsRover
             }
 
             Assert.AreEqual(true, rtnMessage.Contains("Obst"));
-            //Assert.AreEqual(true, rover.gridCoordinates[indexOf].containsObstacle);
-
+            
         }
-        [TestMethod]
-        public void Test_Check_Grid_Is_Creating_The_Correct_Number_Of_Spaces()
-        {
-            Rover rover = new Rover();
-            rover.PositionHeading = "E";
-            string headingIndex = rover.GetDirectionalHeading();
-            rover.PositionY = 0;
-            rover.PositionX = 0;
-
-            rover.LandscapeHeight = 5;
-            rover.LandscapeWidth = 5;
-            rover.BuildLandscapeGrid(false);
-
-            Assert.AreEqual(25, rover.gridCoordinates.Count());
-        }
+       
 
     }
 }
