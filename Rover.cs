@@ -8,7 +8,7 @@ namespace MarsRover
 {
     public class Rover
     {
-        List<string> acceptedCommands = new List<string>() {"f", "F", "b", "B", "r", "R", "l", "L" };
+        public List<string> acceptedCommands = new List<string>() {"f", "F", "b", "B", "r", "R", "l", "L" };
         public List<string> _headingDirectionalOrder = new List<string>() { "N", "E", "S", "W" };
         List<string> acceptedDriveCommands = new List<string>() { "f", "F", "b", "B" };
         List<string> acceptedTurnCommands = new List<string>() { "r", "R", "l" ,"L" };
