@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MarsRover\MarsRover.csproj">
-      <Project>{18472f2b-4a7b-435c-bf00-fb9286c9cdd6}</Project>
+      <Project>{c7d2bf59-6023-4023-8ffd-b0804a09e47e}</Project>
       <Name>MarsRover</Name>
     </ProjectReference>
   </ItemGroup>

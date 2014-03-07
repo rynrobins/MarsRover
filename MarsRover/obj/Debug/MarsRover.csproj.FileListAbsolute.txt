@@ -1,0 +1,4 @@
+M:\Rover\MarsRover\bin\Debug\MarsRover.dll
+M:\Rover\MarsRover\bin\Debug\MarsRover.pdb
+M:\Rover\MarsRover\obj\Debug\MarsRover.dll
+M:\Rover\MarsRover\obj\Debug\MarsRover.pdb
