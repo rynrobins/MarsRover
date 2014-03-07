@@ -39,11 +39,14 @@ namespace RoverConsole
                 {
                     foreach (char c in cmds)
                     {
-                        if(!rover.acceptedCommands.Contains(c.ToString()))
+                        if (!rover.acceptedCommands.Contains(c.ToString()))
                         {
                             Console.WriteLine(string.Format("Invalid command recieved will ingore command: {0}", c));
                         }
-                        outputMessage = rover.Command_Parser(c.ToString());
+                        else
+                        {
+                            outputMessage = rover.Command_Parser(c.ToString());
+                        }
                     }
                     break;
                 }
